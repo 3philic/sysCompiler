@@ -1,5 +1,7 @@
 #include "Scanner.h"
 #include <stdio.h>
+#include <time.h>
+using namespace std;
 
 void printTType(TType a){
 	switch(a){
@@ -44,7 +46,28 @@ int main(int argc, char **argv) {
 
 	Scanner* scanner;
 
+	////////////////////////////////
+	char SittingDown;
+
+	do {
+		cout << "Are you sitting down now(y/n)? ";
+		cin >> SittingDown;
+
+		if( SittingDown != 'y' )
+			cout << "\nCould you please sit down for the next exercise?\n";
+	}
+	while( !(SittingDown == 'y') );
+
+	cout << "\nWonderful!!!\n";
+
+	////////////////////////////////
 	scanner = new Scanner(argv[1]);
+
+	time_t start,end;
+	time (&start);
+
+	ofstream outfile;
+	outfile.open("output.txt");
 
 	while (true) {
 		Token token = scanner->nextToken();
@@ -57,19 +80,26 @@ int main(int argc, char **argv) {
 
 		// print-out
 		// format: tokenType :: tokenLexem
-		printTType(token.type);
-		cout << " :: " << token.lexem;
+//		printTType(token.type);
+		outfile << " :: " << token.lexem;
 
 		// check if there's a an (int)-value associated with the token and if so print it
 		// format:  :: tokenValue
 		if (token.value) {
-			cout << " :: " << *(token.value);
+			outfile << " :: " << *(token.value);
 		}
 
 		// print out line/column
 		// format: (line:#ln column:#clmn)
-		cout << "\t" << "(line:" << token.lineNo << " column:" << token.columnNo << ")" << endl;
+		outfile << "\t" << "(line:" << token.lineNo << " column:" << token.columnNo << ")" << endl;
 	}
+	outfile.close();
+
+	time (&end);
+	double dif = difftime (end,start);
+	printf ("Elapsed time is %.2lf seconds.", dif );
+
+
 
 }
 
