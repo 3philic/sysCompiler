@@ -69,6 +69,7 @@ public:
     static const int zUngleich1;
     static const int zUngleich2;
     static const int zUnd;
+    static const int eError;
 };
 
 #endif /* Automat_H_ */

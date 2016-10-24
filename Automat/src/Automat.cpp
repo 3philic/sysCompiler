@@ -50,6 +50,7 @@ const int Automat::eGeschwKlaAuf = 117;
 const int Automat::eGeschwKlaZu = 118;
 const int Automat::eEckKlaAuf = 119;
 const int Automat::eEckKlaZu = 120;
+const int Automat::eError = 121;
 
 const int Automat::anfang = 0;
 const int Automat::zDigit = 1;
@@ -77,44 +78,44 @@ const int Automat::zUngleich2 = 22;
 
 
 const int Automat::zustandUebergangTabelle1[21][29] = {
-//                   anfang           zDigit   zLexem  zPlus  zMinus zDoppelPunkt         zStern  zKleiner  zGrößer    zGleich zDoppelpunktGleich  zAusrufezeihen   zStrichpunkt  zRundeklaAuf zRundKlaZU  zGeschwKlaAuf  zGeschwKlaZu   zEckKlaAuf eEckKlaAuf 20   21   22   23  24  25   26  27   28
-/* Zahlen */        {zDigit,          1,      2,      ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaAuf},
+//                   anfang           zDigit   zLexem  zPlus  zMinus zDoppelPunkt         zStern  zKleiner  zGrößer    zGleich zDoppelpunktGleich  zAusrufezeihen   zStrichpunkt  zRundeklaAuf zRundKlaZU  zGeschwKlaAuf  zGeschwKlaZu   zEckKlaAuf eEckKlaAuf zUnd     zUndUnd   21   22   23  24  25   26  27   28
+/* Zahlen */        {zDigit,          1,      2,      ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* Buchstaben */
-                    {zLexem,          eDigit, 2,      ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zLexem,          eDigit, 2,      ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* + */
-                    {zPlus,           eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zPlus,           eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* - */
-                    {zMinus,          eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zMinus,          eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* : */
-                    {zDoppelPunkt,    eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zDoppelPunkt,    eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* * */
-                    {zStern,          eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zStern,          eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* < */
-                    {zKleiner,        eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zKleiner,        eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* > */
-                    {zGroesser,       eDigit, eLexem, ePlus, eMinus, zDoppelPunktGleich, eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zGroesser,       eDigit, eLexem, ePlus, eMinus, zDoppelPunktGleich, eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* = */
-                    {zGleich,         eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zGleich,         eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* ! */
-                    {zAusrufeZeichen, eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zAusrufeZeichen, eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* & */
-                    {zUndUnd,         eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zUndUnd,         eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, zUndUnd, eUndUnd},
 /* ; */
-                    {zStrichPunkt,    eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zStrichPunkt,    eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* ( */
-                    {zRundKlaAuf,     eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zRundKlaAuf,     eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* ) */
-                    {zRundKlaZU,      eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zRundKlaZU,      eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* { */
-                    {zGeschwKlaAuf,   eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zGeschwKlaAuf,   eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* } */
-                    {zGeschwKlaZu,    eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zGeschwKlaZu,    eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* [ */
-                    {zEckKlaAuf,      eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zEckKlaAuf,      eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /* ] */
-                    {zEckKlaAuf,      eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu},
+                    {zEckKlaAuf,      eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd},
 /*   */
-                    {anfang,          eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu}
+                    {anfang,          eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich, eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd}
 
 
 };
@@ -237,7 +238,7 @@ TType Automat::checkChar(char c) {
             return kleiner;
         case (120):
             aktuellerZustand = 0;
-            return error;
+            return eError;
         case (122):
             aktuellerZustand = 0;
             return kommentar;
