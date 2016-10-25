@@ -13,10 +13,6 @@
 class Automat {
 
 private:
-    //37(sonderfall) & >100 sind endzustände 101=intiger, 102=lexem, 103=if, 104=while, 105-122=signs, 123=kommentar
-
-    static const int zustandUebergangTabelle[21][29];
-    //static const int a[3][4];
 
     int aktuellerZustand;
 
@@ -74,7 +70,7 @@ public:
     static const int zUnd;
     static const int eError;
     static const int zUngleichSuccess;
-    static const int zustandUebergangTabelle1[20][27];
+    static const int zustandUebergangTabelle[20][27];
     static const int zKommentarAnfang;
     static const int zKommentarEnde;
     static const int eKommentar;
