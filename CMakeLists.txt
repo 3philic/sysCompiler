@@ -61,7 +61,7 @@ set(SOURCE_FILES_PARSER
 
 add_executable(AutomatTest ${SOURCE_FILES_BASE} ${SOURCE_FILES_AUTOMAT} Automat/src/TestAutomat.cpp)
 add_executable(BufferTest ${SOURCE_FILES_BASE} ${SOURCE_FILES_BUFFER} Buffer/src/TestBuffer.cpp)
-add_executable(SymboltableTest ${SOURCE_FILES_BASE} ${SOURCE_FILES_SYMBOLTABLE} Symboltable/src/TestSymboltable.cpp)
+#//add_executable(SymboltableTest ${SOURCE_FILES_BASE} ${SOURCE_FILES_SYMBOLTABLE} Symboltable/src/TestSymboltable.cpp)
 
 add_library(AutomatLib ${SOURCE_FILES_AUTOMAT})
 add_library(BufferLib ${SOURCE_FILES_BUFFER})

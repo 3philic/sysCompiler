@@ -11,7 +11,7 @@ void print(TType a){
 	case 4: cout<<"if"<<endl;break;
 	case 5: cout<<"while"<<endl;break;
 	case 6: cout<<"kommentar"<<endl;break;
-	case 7: cout<<"plus"<<endl;break;
+	case 7: cout<<"plusToken"<<endl;break;
 	case 8: cout<<"minus"<<endl;break;
 	case 9: cout<<"slash"<<endl;break;
 	case 10: cout<<"stern"<<endl;break;

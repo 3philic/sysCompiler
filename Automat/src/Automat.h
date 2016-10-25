@@ -66,10 +66,12 @@ public:
     static const int zEckKlaAuf;
     static const int zEckKlaZu;
     static const int anfang;
-    static const int zUngleich1;
-    static const int zUngleich2;
+    static const int zUngleichStart;
+    static const int zUngleichFailed;
     static const int zUnd;
     static const int eError;
+    static const int zUngleichSuccess;
+    static const int zustandUebergangTabelle1[21][29];
 };
 
 #endif /* Automat_H_ */
