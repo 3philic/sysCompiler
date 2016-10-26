@@ -37,7 +37,7 @@ Token Scanner::nextToken() {
 	lineCache = buffer->getLineNo();
 	columnCache = buffer->getColumnNo();
 
-	while (stop == false || returned_from_automat == gleich) {
+	while (stop == false) {
 		/**
 		 ** Phase 1 des Scanners: Normalbetrieb
 		 **/
@@ -126,8 +126,8 @@ Token Scanner::nextToken() {
 
 		case error:	//unbekannte Tokens werden komplett verworfen und eine Fehlermeldung auf "stderr" ausgegeben
 			*stringCache += *new String(charCache);
-			cerr << "unknown Token Line: " << lineCache << " Column: "
-					<< columnCache << " Symbol: " << *stringCache << endl;
+//			cerr << "unknown Token Line: " << lineCache << " Column: "
+//					<< columnCache << " Symbol: " << *stringCache << endl;
 
 			delete tokenToReturn;
 			tokenToReturn = new Token(*stringCache, error);

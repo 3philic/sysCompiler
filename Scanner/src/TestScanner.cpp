@@ -1,102 +1,105 @@
 #include "Scanner.h"
 #include <stdio.h>
+#include <time.h>
+using namespace std;
 
-void printTType(TType a) {
+
+char* TTypeToString(TType a) {
     switch (a) {
         case null:
-            cout << "0";
+            return "0";
             break;
         case integer:
-            cout << "integer";
+            return "integer";
             break;
         case identifier:
-            cout << "identifier";
+            return "identifier";
             break;
         case lexem:
-            cout << "lexem";
+            return "lexem";
             break;
         case IF:
-            cout << "if";
+            return "if";
             break;
         case WHILE:
-            cout << "while";
+            return "while";
             break;
         case kommentar:
-            cout << "kommentar";
+            return "kommentar";
             break;
         case plusToken:
-            cout << "plusToken";
+            return "plusToken";
             break;
         case minusToken:
-            cout << "minus";
+            return "minus";
             break;
         case doppelpunkt:
-            cout << "doppelpunkt";
+            return "doppelpunkt";
             break;
         case stern:
-            cout << "stern";
+            return "stern";
             break;
         case kleiner:
-            cout << "kleiner";
+            return "kleiner";
             break;
         case groesser:
-            cout << "groesser";
+            return "groesser";
             break;
         case gleich:
-            cout << "gleich";
+            return "gleich";
             break;
 //	case 14: cout<<"gleichGleich";break; // SS14
         case doppeltpunktGleich:
-            cout << "doppelpunktGleich";
+            return "doppelpunktGleich";
             break; // WS14
         case ungleich:
-            cout << "ungleich";
+            return "ungleich";
             break;
         case ausrufezeichen:
-            cout << "ausrufezeichen";
+            return "ausrufezeichen";
             break;
         case undund:
-            cout << "undund";
+            return "undund";
             break;
         case semikolon:
-            cout << "semikolon";
+            return "semikolon";
             break;
         case rundeKlammerAuf:
-            cout << "rundeklammerauf";
+            return "rundeklammerauf";
             break;
         case rundeKlammerZu:
-            cout << "rundeklammerzu";
+            return "rundeklammerzu";
             break;
         case geschweifteKlammerAuf:
-            cout << "geschweifteklammerauf";
+            return "geschweifteklammerauf";
             break;
         case geschweifteKlammerZu:
-            cout << "geschweifteklammerzu";
+            return "geschweifteklammerzu";
             break;
         case eckigeKlammerAuf:
-            cout << "eckigeklammerauf";
+            return "eckigeklammerauf";
             break;
         case eckigeKlammerZu:
-            cout << "eckigeklammerzu";
+            return "eckigeklammerzu";
             break;
         case error:
-            cout << "error";
+            return "error";
             break;
         case ELSE:
-            cout << "else";
+            return "else";
             break;
 //	case 27: cout<<"print";break; // SS14
         case writeToken:
-            cout << "write";
+            return "write";
             break; // WS14
         case readToken:
-            cout << "read";
+            return "read";
             break;
         case intToken:
-            cout << "int-Token";
+            return "int-Token";
             break;
         default:
-            cout << "";
+            return "";
             break;
 
     }
@@ -105,33 +108,40 @@ void printTType(TType a) {
 int main(int argc, char **argv) {
 
     Scanner *scanner;
-
     scanner = new Scanner(argv[1]);
+
+    time_t start,end;
+    time (&start);
+
+    ofstream outfile;
+    outfile.open("output.txt");
 
     while (true) {
         Token token = scanner->nextToken();
 
         // Abbruchbedingung	(Lexem:# ist das Abbruchzeichen des Automaten)
         if (token.lexem.equals(*new String('#'))) {
-            cout << "EOF";
+            outfile << "EOF";
             break;
         }
 
         // print-out
-        // format: tokenType :: tokenLexem
-        printTType(token.type);
-        cout << " :: " << token.lexem;
-
-        // check if there's a an (int)-value associated with the token and if so print it
-        // format:  :: tokenValue
-        if (token.value) {
-            cout << " :: " << *(token.value);
+        outfile << "Token " << TTypeToString(token.type);
+        outfile << "\tLine: " << token.lineNo << " Column: " << token.columnNo;
+        if (token.type == lexem) {
+            outfile << "\tLexem: " << token.lexem;
         }
-
-        // print out line/column
-        // format: (line:#ln column:#clmn)
-        cout << "\t" << "(line:" << token.lineNo << " column:" << token.columnNo << ")" << endl;
+        if (token.type == integer) {
+            outfile << "\tValue: " << *(token.value);
+        }
+        outfile << endl;
     }
+    outfile.close();
+
+    time(&end);
+    double dif = difftime (end,start);
+    printf ("Elapsed time is %.2lf seconds.", dif );
+
 
 }
 
