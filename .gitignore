@@ -53,6 +53,7 @@ CTestTestfile.cmake
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+.idea/sysCompiler.iml
 
 # Gradle:
 .idea/gradle.xml
