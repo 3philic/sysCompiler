@@ -130,8 +130,18 @@ int String::hashCode() {
 	return hashWert;
 }
 
+// Zeigt Error auf der Konsole an, wenn Konversion mittels strtol fehlschlägt!
 long String::value() {
-	return std::strtol(this->str, 0, 10);//long mit Basis 10 wird vom internen c-Style String geparst
+	errno = 0;
+
+	//long mit Basis 10 wird vom internen c-Style String geparst
+	long val = std::strtol(this->str, 0, 10);
+	if ((errno == ERANGE && (val == LONG_MAX || val == LONG_MIN))
+	                   || (errno != 0 && val == 0)) {
+	               cerr << "strtol: read out value out of range of representable values by a long, or no valid conversion possible" << endl;
+	           }
+
+	return val;
 }
 
 ostream& operator<<(ostream &out, String &s) {
