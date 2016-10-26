@@ -16,10 +16,8 @@ Scanner::Scanner(char* argv) {
 	stop = false;
 
 	automat = new Automat();
-
 	buffer = new Buffer(argv);
 	buffer->fillBuffer();
-
 	symboltable = new Symboltable();
 }
 
@@ -31,11 +29,14 @@ Scanner::~Scanner() {
 }
 
 Token Scanner::nextToken() {
-
 	Token* tokenToReturn = 0;	//Token, das schließlich returned werden wird
 	//cachen der neuen Positionsmarker
-	lineCache = buffer->getLineNo();
-	columnCache = buffer->getColumnNo();
+	updatePositionMarkers();
+	// wenn noch ein (nichtleerer) Char im Char-Cache drin ist,
+	// müssen wir den bei der Positions-Zählung mitbeachten (um einen zurücksetzen)
+	if (!(charCache == '\n') && !(charCache == ' ') && !(charCache == 0)) {
+		columnCache--;
+	}
 
 	while (stop == false) {
 		/**
@@ -71,8 +72,14 @@ Token Scanner::nextToken() {
 		switch (returned_from_automat) {
 
 		case null:
-			if (charCache != ' ')
+			if (charCache != ' ') {
 				*stringCache += *new String(charCache);
+			}
+			else {
+				// wir sind noch am Leerzeichen überspringen (der Anfang von einem Token wurde noch nicht gefunden
+				// und daher aktualisieren wir beim überspringen stets die Positionsmarker
+				updatePositionMarkers();
+			}
 			break;
 
 		case integer:	//Zahl, also muss zusätzlich Wert gespeichert werden
@@ -122,26 +129,28 @@ Token Scanner::nextToken() {
 		case kommentar:	//Kommentar wird komplett verworfen und die Suche nach einem Token läuft unbehindert weiter
 			delete stringCache;
 			stringCache = new String();
+
+			updatePositionMarkers();
 			break;
 
 		case error:	//unbekannte Tokens werden komplett verworfen und eine Fehlermeldung auf "stderr" ausgegeben
 			*stringCache += *new String(charCache);
-//			cerr << "unknown Token Line: " << lineCache << " Column: "
-//					<< columnCache << " Symbol: " << *stringCache << endl;
+			cerr << "unknown Token Line: " << lineCache << " Column: "
+					<< columnCache << " Symbol: " << *stringCache << endl;
 
 			delete tokenToReturn;
-			tokenToReturn = new Token(*stringCache, error);
+			tokenToReturn = new Token(*stringCache, error, lineCache, columnCache);
 
 			delete stringCache;
 			stringCache = new String();
 
-			returned_from_automat = automat->checkChar(' ');//Automat wird Tokenabbruch signalisiert
+			returned_from_automat = automat->checkChar(' '); // Dem Automat wird Tokenabbruch signalisiert
 			return *tokenToReturn;
 			break;
 
 		default:
 			delete tokenToReturn;
-			tokenToReturn = new Token(*new String(), returned_from_automat, 0,
+			tokenToReturn = new Token(*new String(), returned_from_automat,
 					lineCache, columnCache);
 			delete stringCache;
 			stringCache = new String();
@@ -159,4 +168,10 @@ Token Scanner::nextToken() {
 
 	returned_from_automat = automat->checkChar(' ');
 	return *new Token("#", null);
+}
+
+// setzt die Positionsmarker auf den aktuellen Wert (den der Buffer angibt)
+void Scanner::updatePositionMarkers() {
+	lineCache = buffer->getLineNo();
+	columnCache = buffer->getColumnNo();
 }

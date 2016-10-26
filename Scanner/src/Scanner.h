@@ -32,8 +32,10 @@ private:
 
 	Automat* automat;
 	Buffer* buffer;
-//	DummyBuffer* buffer;
 	Symboltable* symboltable;
+
+	// setzt die Positionsmarker auf den aktuellen Wert (den der Buffer angibt)
+	void updatePositionMarkers();
 };
 
 #endif /* SCANNER_H_ */
