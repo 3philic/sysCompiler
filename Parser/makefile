@@ -1,51 +1,56 @@
-#
-#		Targets zum Bauen des Tests
-#
+SRCDIR = src
+OBJDIR = debug
 
-# Linken der Object-files, abhaengig von ParserTarget und TestParserTarget
-# flag:
-# -g --> debug Informationen erzeugen
-# -o --> name des output-files
+BINDIR = debug
 
-makeTestParser: ParserTarget TestParserTarget  
-	g++ --std=c++0x -g debug/Parser.o debug/TestParser.o -o debug/ParserTest
+LIBDIR = lib
+
+
+SHAREDLIB = ../sharedlib
+
+## hier alle Object Files eintragen
+## darauf achten, dass letzte Zeile ohne "\" eingetragen wird
+
+OBJS = $(OBJDIR)/Parser.o \
+	$(OBJDIR)/TestParser.o \
+	$(OBJDIR)/Node.o \
+	$(OBJDIR)/ProgramNode.o
+
+OBJSFORSCANNERLIB =  \
+	$(LIBDIR)/Parser.o
+
+
+
+#Variante  mit guten Kenntnissen
+makeTestParser: $(OBJS)
+	g++ -g $^ -L../sharedlib  -lAutomat -lBuffer -lSymboltable -lScanner -o $(BINDIR)/ParserTest
 	
-
-# compilieren des Files Parser.cpp zu Parser.o, 
-# das Objekt-File ist abhängig von src/Parser.cpp und src/Parser.h
-# flag:
-# -c --> compilieren
-# -Wall --> alle meldungen erzeugen
-
-ParserTarget :  src/Parser.cpp src/Parser.h 
-	g++ --std=c++0x  -g  -c -Wall src/Parser.cpp -o debug/Parser.o  
+	
+	
+# $^ liste der abhaengigkeiten
 
 
-# TestParser.o ist abhängig von src/TestParser.cpp und src/Parser.h
-TestParserTarget :  src/TestParser.cpp src/Parser.h
-	g++ --std=c++0x  -g  -c -Wall src/TestParser.cpp  -o debug/TestParser.o  
+$(OBJDIR)/%.o :  $(SRCDIR)/%.cpp 
+	@echo "g++ $*.cpp"
+	g++ -g  -c -Wall  -o $@  $<
+
+# 
+# $@ name des object files
+# $< erste abhaengigkeit
 
 
-
-# loeschen aller files im verzeichnis obj und lib und neu bauen
+# loeschen aller files im verzeichnis $(OBJDIR) und $(LIBDIR) und neu bauen
 
 cleanParser:
-	rm -rf obj/*
-	rm -rf lib/*
-	$(MAKE) makeTestParser
+	rm -rf $(OBJDIR)/*
 	
 	
-#
-# erstellen der shared library
-#
+	
+ParserLib:$(OBJSFORPARSERLIB)
+	g++ -L../sharedlib  -lAutomat -lBuffer -lSymboltable -lScanner -shared -o $(SHAREDLIB)/libParser.so $^
 
-ParserLib: ParserLibTarget
-		g++ --std=c++0x  -shared lib/Parser.o  -o ../sharedlib/libParser.so 
+$(LIBDIR)/%.o :  $(SRCDIR)/%.cpp 
+	@echo "g++ $*.cpp"
+	g++ -g  -c -fPIC  -o $@  $<
 
 	
-# compilieren des Files Parser.cpp zu Parser.o mit dem Flag -fPIC (Position Independant Code)
-ParserLibTarget :  src/Parser.cpp src/Parser.h
-	g++ --std=c++0x  -g  -c -fPIC  src/Parser.cpp -o lib/Parser.o   
-
-
-

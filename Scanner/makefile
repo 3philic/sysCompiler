@@ -67,21 +67,14 @@ $(OBJDIR)/%.o :  $(SRCDIR)/%.cpp
 
 cleanScanner:
 	rm -rf $(OBJDIR)/*
-	$(MAKE) makeTestScanner
 	
 	
 	
-## erstellen der shared library
+ScannerLib:$(OBJSFORSCANNERLIB)
+	g++ -L../sharedlib  -lAutomat -lBuffer -lSymboltable -shared -o $(SHAREDLIB)/libScanner.so $^
 
-# erst wichtig fuer den Parser Teil
-#
-#ScannerLib:$(OBJSFORSCANNERLIB)
-#		g++ -shared  -o $(SHAREDLIB)/libScanner.so $^ 
-#
-#	
-#$(LIBDIR)/%.o :  $(SRCDIR)/%.cpp 
-##	@mkdir -p `dirname $(OBJDIR)/$*.o`
-#	@echo "g++ $*.cpp"
-#	g++ -g  -c -fPIC  -o $@  $<
+$(LIBDIR)/%.o :  $(SRCDIR)/%.cpp 
+	@echo "g++ $*.cpp"
+	g++ -g  -c -fPIC  -o $@  $<
 
 	

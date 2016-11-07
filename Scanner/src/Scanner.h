@@ -20,7 +20,7 @@ class Scanner {
 public:
 	Scanner(char* argv);
 	virtual ~Scanner();
-	Token nextToken();
+	Token* nextToken();
 
 private:
 	char charCache;

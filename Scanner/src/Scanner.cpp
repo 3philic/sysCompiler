@@ -28,7 +28,7 @@ Scanner::~Scanner() {
 	delete symboltable;
 }
 
-Token Scanner::nextToken() {
+Token* Scanner::nextToken() {
 	Token* tokenToReturn = 0;	//Token, das schließlich returned werden wird
 	//cachen der neuen Positionsmarker
 	updatePositionMarkers();
@@ -89,7 +89,7 @@ Token Scanner::nextToken() {
 			delete stringCache;
 			stringCache = new String();
 
-			return *tokenToReturn;
+			return tokenToReturn;
 			break;
 
 		case lexem: //Dieser Fall wird betreten, falls der Automat ein Lexem oder
@@ -108,7 +108,7 @@ Token Scanner::nextToken() {
 				delete stringCache;
 				stringCache = new String();
 
-				return *tokenToReturn;
+				return tokenToReturn;
 			}
 
 			//bzw. ein Token vom Typ "identifier" in der Symboltabelle angelegt
@@ -122,7 +122,7 @@ Token Scanner::nextToken() {
 
 				symboltable->insertToken(tokenToReturn);
 
-				return *tokenToReturn;
+				return tokenToReturn;
 			}
 			break;
 
@@ -145,7 +145,7 @@ Token Scanner::nextToken() {
 			stringCache = new String();
 
 			returned_from_automat = automat->checkChar(' '); // Dem Automat wird Tokenabbruch signalisiert
-			return *tokenToReturn;
+			return tokenToReturn;
 			break;
 
 		default:
@@ -155,7 +155,7 @@ Token Scanner::nextToken() {
 			delete stringCache;
 			stringCache = new String();
 
-			return *tokenToReturn;
+			return tokenToReturn;
 			break;
 		}
 	}
@@ -167,7 +167,7 @@ Token Scanner::nextToken() {
 	 */
 
 	returned_from_automat = automat->checkChar(' ');
-	return *new Token("#", null);
+	return new Token("#", null);
 }
 
 // setzt die Positionsmarker auf den aktuellen Wert (den der Buffer angibt)

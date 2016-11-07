@@ -8,22 +8,25 @@
 #ifndef PARSER_H_
 #define PARSER_H_
 
+#include "../../Token.h"
 #include "../../Scanner/src/Scanner.h"
-
-#include "ParseVariable.h"
+#include "Node.h"
+#include "ProgramNode.h"
 
 class Parser {
+
 public:
 	Parser(char* fileLocation);
 	virtual ~Parser();
 
-	void parse();
-private:
-	Scanner* scanner;
+	Node* parseTree;	// rootNode
 
-	// Datenstruktur
-	ParseVariable* currentParseVariable;	// bestimmt sich durch die Antwort des
-											// Methodenaufrufs (insertToken)
+	void parse();
+
+private:
+	Token* currentToken;
+
+	Scanner* scanner;
 
 };
 
