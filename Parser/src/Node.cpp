@@ -8,25 +8,36 @@
 #include "Node.h"
 #include <assert.h>
 #include <iostream>
-//#include "Parser.h"
+#include "Visitor.h"
 
 using namespace std;
 
 Node::Node() {
-    childrenNodes = new LinkedList<Node *>();
+    childrenNodes = new LinkedList<ParseTree *>();
 }
 
 Node::~Node() {
     // TODO Auto-generated destructor stub
 }
 
-void Node::deleteChildrenNodes() {
-    LinkedList<Node *>::ListIterator<Node *> *iterator = childrenNodes->iterator();
+// Override
+void Node::accept(struct Visitor &visitor) {
+    LinkedList<ParseTree *>::ListIterator<ParseTree *> *iterator = childrenNodes->iterator();
     while (iterator->hasNext()) {
-        Node *next = iterator->next();
+        ParseTree *next = iterator->next();
+        next->accept(visitor);
+    }
+    visitor.visit(*this);
+    delete iterator;
+}
+
+void Node::deleteChildrenNodes() {
+    LinkedList<ParseTree *>::ListIterator<ParseTree *> *iterator = childrenNodes->iterator();
+    while (iterator->hasNext()) {
+        ParseTree *next = iterator->next();
         delete next;
     }
     delete iterator;
     delete childrenNodes;
-    childrenNodes = new LinkedList<Node *>();
+    childrenNodes = new LinkedList<ParseTree *>();
 }

@@ -27,6 +27,7 @@ bool ProgramNode::parse(Parser &parser) {
         StatementsNode *statementsNode = new StatementsNode();
         if (statementsNode->parse(parser)) {
             childrenNodes->put(statementsNode);
+
             return true;
         } else {
             delete statementsNode;
@@ -36,18 +37,6 @@ bool ProgramNode::parse(Parser &parser) {
     }
 
     return false;
-}
-
-void ProgramNode::accept(Visitor &visitor) {
-    // 1. call accept for alternatives
-    // 2. mark this ProgramNode visited
-
-    // 1.
-    // IMPLEMENT!!!
-    cout << "Implement ProgramNode::accept()'s calling accept on alternatives." << endl;
-
-    // 2.
-    visitor.visit(*this);
 }
 
 void ProgramNode::print() {

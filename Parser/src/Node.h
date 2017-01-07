@@ -17,9 +17,11 @@ public:
 	Node();
 	virtual ~Node();
 
-    LinkedList<Node *>* childrenNodes;	// <Node>
-
+    LinkedList<ParseTree *>* childrenNodes;	// <ParseTree>
 	void deleteChildrenNodes();
+
+	// Override
+	void accept(class Visitor &visitor);
 private:
 };
 

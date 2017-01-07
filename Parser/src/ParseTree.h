@@ -13,7 +13,7 @@ public:
     virtual ~ParseTree();
 
     virtual bool parse(Parser &parser) = 0;
-    virtual void accept(class Visitor &visitor) = 0;
+    virtual void accept(class Visitor &visitor);
 
     // Visitor methods
     virtual void print() = 0;

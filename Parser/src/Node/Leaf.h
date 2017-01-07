@@ -16,10 +16,10 @@ public:
     virtual ~Leaf();
 
     bool parse(Parser &parser);
-    void accept(class Visitor &visitor);
 
     void print();
 
+    Token *token;
     TType expectedTType;
 };
 

@@ -57,18 +57,6 @@ bool DeclsNode::parse(Parser &parser) {
     return false;
 }
 
-void DeclsNode::accept(Visitor &visitor) {
-    // 1. call accept for alternatives
-    // 2. mark this DeclsNode visited
-
-    // 1.
-    // IMPLEMENT!!!
-    cout << "Implement DeclsNode::accept()'s calling accept on alternatives." << endl;
-
-    // 2.
-    visitor.visit(*this);
-}
-
 void DeclsNode::print() {
     cout << "Implement DeclsNode::print()." << endl;
 }

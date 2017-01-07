@@ -7,7 +7,7 @@
 
 class Visitor {
 public:
-    virtual void visit(class Node &node) = 0;
+    virtual void visit(class ParseTree &parseTree) = 0;
 
 };
 

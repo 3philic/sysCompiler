@@ -16,9 +16,10 @@ Leaf::~Leaf() {
 }
 
 bool Leaf::parse(Parser &parser) {
+    this->token = parser.currentToken;
 
-    if (parser.currentToken->type == expectedTType) {
-        cout << "Leaf " << TTypeToString(parser.currentToken->type) << endl;
+    if (token->type == expectedTType) {
+        cout << "Leaf " << TTypeToString(token->type) << endl;
         parser.nextToken();
         return true;
     } else {
@@ -26,18 +27,6 @@ bool Leaf::parse(Parser &parser) {
     }
 }
 
-void Leaf::accept(Visitor &visitor) {
-    // 1. call accept for alternatives
-    // 2. mark this Leaf visited
-
-    // 1.
-    // IMPLEMENT!!!
-    cout << "Implement Leaf::accept()'s calling accept on alternatives." << endl;
-
-    // 2.
-    visitor.visit(*this);
-}
-
 void Leaf::print() {
-    cout << "Implement Leaf::print()." << endl;
+    cout << TTypeToString(token->type);
 }

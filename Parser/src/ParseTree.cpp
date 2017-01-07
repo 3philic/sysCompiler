@@ -4,6 +4,8 @@
 
 #include <assert.h>
 #include "ParseTree.h"
+#include "../../LinkedList.h"
+#include "Visitor.h"
 
 ParseTree::ParseTree() {
 }
@@ -17,7 +19,7 @@ bool ParseTree::parse(Parser &parser) {
 }
 
 void ParseTree::accept(class Visitor &visitor) {
-    assert(false);	// overwrite in subclasses of ParseTree!
+    visitor.visit(*this);
 }
 
 void ParseTree::print() {

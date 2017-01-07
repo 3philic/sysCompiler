@@ -113,18 +113,6 @@ bool Exp2Node::parse(Parser &parser) {
     return false;
 }
 
-void Exp2Node::accept(Visitor &visitor) {
-    // 1. call accept for alternatives
-    // 2. mark this ExpNode visited
-
-    // 1.
-    // IMPLEMENT!!!
-    cout << "Implement ExpNode::accept()'s calling accept on alternatives." << endl;
-
-    // 2.
-    visitor.visit(*this);
-}
-
 void Exp2Node::print() {
     cout << "Implement ExpNode::print()." << endl;
 }
