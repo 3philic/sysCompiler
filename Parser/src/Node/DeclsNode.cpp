@@ -35,7 +35,7 @@ bool DeclsNode::parse(Parser &parser) {
                 rule = DECLS_RULE;
                 return true;
             } else {
-                delete declNode;
+                delete declsNode;
             }
         } else {
             delete semikolonLeaf;
