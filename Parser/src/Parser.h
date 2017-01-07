@@ -11,7 +11,7 @@
 #include "../../Token.h"
 #include "../../Scanner/src/Scanner.h"
 #include "Node.h"
-#include "ProgramNode.h"
+#include "Node/ProgramNode.h"
 
 class Parser {
 
@@ -20,13 +20,14 @@ public:
 	virtual ~Parser();
 
 	Node* parseTree;	// rootNode
+    Token* currentToken;
 
 	void parse();
 	void accept(class Visitor &visitor);
 
-private:
-	Token* currentToken;
+    void nextToken();
 
+private:
 	Scanner* scanner;
 
 };

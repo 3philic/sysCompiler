@@ -8,24 +8,18 @@
 #ifndef PARSER_SRC_NODE_H_
 #define PARSER_SRC_NODE_H_
 
-#include "../../Symboltable/src/LinkedList.h"
+#include "Visitor.h"
+#include "ParseTree.h"
+#include "../../LinkedList.h"
 
-class Parser;
-
-class Node {
+class Node: public ParseTree {
 public:
 	Node();
 	virtual ~Node();
 
-	virtual bool parse(Parser &parser) = 0;
-	virtual void accept(class Visitor &visitor) = 0;
-
-    // Visitor methods
-    virtual void print() = 0;
-
+	void deleteChildrenNodes();
 private:
-	LinkedList* alternatives;	// <LinkedList <Node>>
-
+	LinkedList<Node>* childrenNodes;	// <Node>
 };
 
 #endif /* PARSER_SRC_NODE_H_ */

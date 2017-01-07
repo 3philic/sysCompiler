@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "Symboltable.h"
-#include "LinkedList.h"
+#include "TokenLinkedList.h"
 #include "../../TType.h"
 using namespace std;
 

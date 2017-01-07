@@ -3,7 +3,7 @@
 //
 
 #include "PrintingVisitor.h"
-#include "ProgramNode.h"
+#include "Node/ProgramNode.h"
 #include <iostream>
 using namespace std;
 

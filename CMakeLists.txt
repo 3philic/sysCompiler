@@ -28,8 +28,8 @@ set(SOURCE_FILES_SYMBOLTABLE
     Symboltable/src/HashMap.cpp
     Symboltable/src/HashMap.h
     Symboltable/src/ILinkedList.h
-    Symboltable/src/LinkedList.cpp
-    Symboltable/src/LinkedList.h
+        Symboltable/src/TokenLinkedList.cpp
+        Symboltable/src/TokenLinkedList.h
     Symboltable/src/Symboltable.cpp
     Symboltable/src/Symboltable.h
     Symboltable/src/TestHashMap.cpp
@@ -51,10 +51,10 @@ set(SOURCE_FILES_PARSER
     Parser/src/Node.h
     Parser/src/Parser.cpp
     Parser/src/Parser.h
-    Parser/src/ProgramNode.cpp
-    Parser/src/ProgramNode.h
+        Parser/src/Node/ProgramNode.cpp
+        Parser/src/Node/ProgramNode.h
     Parser/src/TestParser.cpp
-        Parser/src/Visitor.cpp Parser/src/Visitor.h Parser/src/PrintingVisitor.cpp Parser/src/PrintingVisitor.h)
+        Parser/src/Visitor.cpp Parser/src/Visitor.h Parser/src/PrintingVisitor.cpp Parser/src/PrintingVisitor.h Parser/src/Node/DeclsNode.cpp Parser/src/Node/DeclsNode.h Parser/src/Node/StatementsNode.cpp Parser/src/Node/StatementsNode.h Parser/src/Node/Leaf.cpp Parser/src/Node/Leaf.h Parser/src/Node/DeclNode.cpp Parser/src/Node/DeclNode.h Parser/src/Node/EpsilonNode.cpp Parser/src/Node/EpsilonNode.h Parser/src/Node/ArrayNode.cpp Parser/src/Node/ArrayNode.h Parser/src/ParseTree.cpp Parser/src/ParseTree.h LinkedList.h)
 
 
 add_executable(AutomatTest ${SOURCE_FILES_BASE} ${SOURCE_FILES_AUTOMAT} Automat/src/TestAutomat.cpp)

@@ -24,3 +24,7 @@ void Parser::parse() {
 void Parser::accept(class Visitor &visitor) {
     parseTree->accept(visitor);
 }
+
+void Parser::nextToken() {
+    scanner->nextToken();
+}

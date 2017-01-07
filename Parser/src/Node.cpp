@@ -7,16 +7,19 @@
 
 #include "Node.h"
 #include <assert.h>
+#include <iostream>
 //#include "Parser.h"
 
+using namespace std;
+
 Node::Node() {
-	alternatives = new LinkedList();
+	childrenNodes = new LinkedList<Node>();
 }
 
 Node::~Node() {
 	// TODO Auto-generated destructor stub
 }
 
-bool Node::parse(Parser &parser) {
-	assert(false);	// overwrite in subclasses of Node!
+void Node::deleteChildrenNodes() {
+	cout << "Implement Node::deleteChildrenNodes()." << endl;
 }
