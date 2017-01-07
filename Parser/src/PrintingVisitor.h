@@ -13,7 +13,7 @@ public:
     PrintingVisitor();
     virtual ~PrintingVisitor();
 
-    void visit(class Node &node);
+    void visit(class ParseTree &parseTree);
 };
 
 

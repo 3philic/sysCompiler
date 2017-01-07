@@ -47,18 +47,6 @@ bool OpExpNode::parse(Parser &parser) {
     return false;
 }
 
-void OpExpNode::accept(Visitor &visitor) {
-    // 1. call accept for alternatives
-    // 2. mark this ExpNode visited
-
-    // 1.
-    // IMPLEMENT!!!
-    cout << "Implement ExpNode::accept()'s calling accept on alternatives." << endl;
-
-    // 2.
-    visitor.visit(*this);
-}
-
 void OpExpNode::print() {
     cout << "Implement ExpNode::print()." << endl;
 }

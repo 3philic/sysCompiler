@@ -241,18 +241,6 @@ bool StatementNode::parse(Parser &parser) {
     return false;
 }
 
-void StatementNode::accept(Visitor &visitor) {
-    // 1. call accept for alternatives
-    // 2. mark this StatementNode visited
-
-    // 1.
-    // IMPLEMENT!!!
-    cout << "Implement StatementNode::accept()'s calling accept on alternatives." << endl;
-
-    // 2.
-    visitor.visit(*this);
-}
-
 void StatementNode::print() {
     cout << "Implement StatementNode::print()." << endl;
 }

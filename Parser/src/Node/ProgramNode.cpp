@@ -39,18 +39,6 @@ bool ProgramNode::parse(Parser &parser) {
     return false;
 }
 
-void ProgramNode::accept(Visitor &visitor) {
-    // 1. call accept for alternatives
-    // 2. mark this ProgramNode visited
-
-    // 1.
-    // IMPLEMENT!!!
-    cout << "Implement ProgramNode::accept()'s calling accept on alternatives." << endl;
-
-    // 2.
-    visitor.visit(*this);
-}
-
 void ProgramNode::print() {
     cout << "Implement ProgramNode::print()." << endl;
 }

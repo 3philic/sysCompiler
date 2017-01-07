@@ -56,18 +56,6 @@ bool ArrayNode::parse(Parser &parser) {
     return false;
 }
 
-void ArrayNode::accept(Visitor &visitor) {
-    // 1. call accept for alternatives
-    // 2. mark this ArrayNode visited
-
-    // 1.
-    // IMPLEMENT!!!
-    cout << "Implement ArrayNode::accept()'s calling accept on alternatives." << endl;
-
-    // 2.
-    visitor.visit(*this);
-}
-
 void ArrayNode::print() {
     cout << "Implement ArrayNode::print()." << endl;
 }
