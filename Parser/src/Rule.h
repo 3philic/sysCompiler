@@ -101,6 +101,8 @@ inline std::ostream &operator<<(std::ostream &os, const Rule &dt) {
         case OPERATOR_RULE:
             os << "OP";
             break;
+        default:
+            os << "UNDEFINED";
     };
 
     return os;
