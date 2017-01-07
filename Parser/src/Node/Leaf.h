@@ -10,7 +10,7 @@
 #include "../../../Token.h"
 #include "../../../TType.h"
 
-class Leaf: public Node {
+class Leaf: public ParseTree {
 public:
     Leaf(TType expectedTType);
     virtual ~Leaf();
