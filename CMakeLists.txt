@@ -47,14 +47,12 @@ set(SOURCE_FILES_SCANNER
 )
 
 set(SOURCE_FILES_PARSER
-    Parser/src/ParseVariables/vProg.cpp
-    Parser/src/ParseVariables/vProg.h
+    Parser/src/Node.cpp
+    Parser/src/Node.h
     Parser/src/Parser.cpp
     Parser/src/Parser.h
-    Parser/src/ParseTreeObject.cpp
-    Parser/src/ParseTreeObject.h
-    Parser/src/ParseVariable.cpp
-    Parser/src/ParseVariable.h
+    Parser/src/ProgramNode.cpp
+    Parser/src/ProgramNode.h
     Parser/src/TestParser.cpp
     )
 
@@ -66,6 +64,10 @@ add_executable(BufferTest ${SOURCE_FILES_BASE} ${SOURCE_FILES_BUFFER} Buffer/src
 add_library(AutomatLib ${SOURCE_FILES_AUTOMAT})
 add_library(BufferLib ${SOURCE_FILES_BUFFER})
 add_library(SymboltableLib ${SOURCE_FILES_SYMBOLTABLE})
+add_library(ScannerLib ${SOURCE_FILES_SCANNER})
 
 add_executable(ScannerTest ${SOURCE_FILES_BASE} ${SOURCE_FILES_SCANNER} Scanner/src/TestScanner.cpp)
 target_link_libraries (ScannerTest AutomatLib BufferLib SymboltableLib)
+
+add_executable(ParserTest ${SOURCE_FILES_BASE} ${SOURCE_FILES_PARSER} Parser/src/TestParser.cpp)
+target_link_libraries (ParserTest AutomatLib BufferLib SymboltableLib ScannerLib)
