@@ -8,6 +8,7 @@
 #include <iostream>
 
 enum Rule {
+    UNDEFINED_RULE,
     PROG_RULE,
     DECLS_RULE,
     STATEMENTS_RULE,
