@@ -94,9 +94,9 @@ const int Automat::zustandUebergangTabelle[20][27] = {
 /* ] */
                     {zEckKlaZu,       eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich,        eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu,  eError,  eUndUnd, zUngleichFailed,  zDoppelPunkt, eUngleich, zKommentarAnfang, zKommentarAnfang, eKommentar},
 /*   */
-                    {anfang,          eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich,        eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaAuf, eError,  eUndUnd, zUngleichFailed,  zDoppelPunkt, eUngleich, zKommentarAnfang, zKommentarAnfang, eKommentar},
+                    {anfang,          eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich,        eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd, zUngleichFailed,  zDoppelPunkt, eUngleich, zKommentarAnfang, zKommentarAnfang, eKommentar},
 
-                    {eError,          eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich,        eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaAuf, eError,  eUndUnd, zUngleichFailed,  zDoppelPunkt, eUngleich, zKommentarAnfang, zKommentarAnfang, eKommentar}
+                    {eError,          eDigit, eLexem, ePlus, eMinus, eDoppelPunkt,       eStern, eKleiner, eGroesser, eGleich,        eDoppelPunktGleich, eAusrufeZeichen, eStrichPunkt, eRundKlaAuf, eRundKlaZU, eGeschwKlaAuf, eGeschwKlaZu, eEckKlaAuf, eEckKlaZu, eError,  eUndUnd, zUngleichFailed,  zDoppelPunkt, eUngleich, zKommentarAnfang, zKommentarAnfang, eKommentar}
 
 
 };
