@@ -16,7 +16,9 @@ Leaf::~Leaf() {
 }
 
 bool Leaf::parse(Parser &parser) {
+
     if (parser.currentToken->type == expectedTType) {
+        cout << "Leaf " << TTypeToString(parser.currentToken->type) << endl;
         parser.nextToken();
         return true;
     } else {

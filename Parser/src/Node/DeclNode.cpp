@@ -20,7 +20,7 @@ DeclNode::~DeclNode() {
 
 bool DeclNode::parse(Parser &parser) {
     // (int array identifier)
-    Leaf *intLeaf = new Leaf(integer);
+    Leaf *intLeaf = new Leaf(intToken);
     if (intLeaf->parse(parser)) {
         // childrenNodes.add(intLeaf);
 

@@ -26,5 +26,5 @@ void Parser::accept(class Visitor &visitor) {
 }
 
 void Parser::nextToken() {
-    scanner->nextToken();
+	currentToken = scanner->nextToken();
 }
