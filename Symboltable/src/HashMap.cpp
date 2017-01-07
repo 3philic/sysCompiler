@@ -15,7 +15,7 @@ using namespace std;
 
 HashMap::HashMap(int size) {
 	this->size = size;
-	this->table = new LinkedList[size];
+	this->table = new TokenLinkedList[size];
 
 
 }
@@ -36,7 +36,7 @@ TType HashMap::getTokenType(String lexem) {
 	if (this->table[index].getSize() == 0) {
 		return null;
 	} else {
-	//falls Zeile nicht leer, sequenziell LinkedList nach gesuchtem String durchsuchen
+	//falls Zeile nicht leer, sequenziell TokenLinkedList nach gesuchtem String durchsuchen
 	//und TType des zugehörigen Tokens zurückgeben
 		for (int i = 0; i < table[index].getSize(); i++) {
 

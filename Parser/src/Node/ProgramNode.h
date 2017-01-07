@@ -8,7 +8,7 @@
 #ifndef PARSER_SRC_PROGRAMNODE_H_
 #define PARSER_SRC_PROGRAMNODE_H_
 
-#include "Node.h"
+#include "../Node.h"
 
 class ProgramNode: public Node {
 public:

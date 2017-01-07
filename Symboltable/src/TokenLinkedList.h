@@ -13,14 +13,14 @@
 
 class Token;
 
-class LinkedList: public ILinkedList {
+class TokenLinkedList: public ILinkedList {
 private:
 	int size;
 	TokenNode* first;
 	TokenNode* last;
 public:
-	LinkedList();
-	virtual ~LinkedList();
+	TokenLinkedList();
+	virtual ~TokenLinkedList();
 
 	bool add(Token* l, int index);
 	bool addFirst(Token* l);

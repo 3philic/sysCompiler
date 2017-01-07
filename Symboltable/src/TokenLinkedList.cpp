@@ -1,14 +1,14 @@
 /*
- * LinkedList.cpp
+ * TokenLinkedList.cpp
  *
  *  Created on: Apr 6, 2014
  *      Author: 3philic
  */
 
-#include "LinkedList.h"
+#include "TokenLinkedList.h"
 #include <iostream>	//für debugging-Zwecke
 
-LinkedList::LinkedList() {
+TokenLinkedList::TokenLinkedList() {
 	first = 0;	//Nullpointer
 	last = 0;	//Nullpointer
 	size = 0;
@@ -17,18 +17,18 @@ LinkedList::LinkedList() {
 	//addLast(*(new Token(*new String ("int"), integer)));
 }
 
-LinkedList::~LinkedList() {
+TokenLinkedList::~TokenLinkedList() {
 	delete first;
 	delete last;
 }
 
-bool LinkedList::add(Token* l, int index) {
+bool TokenLinkedList::add(Token* l, int index) {
 	//verschoben
 }
-bool LinkedList::addFirst(Token* l) {
+bool TokenLinkedList::addFirst(Token* l) {
 	//verschoben
 }
-bool LinkedList::addLast(Token* l) {
+bool TokenLinkedList::addLast(Token* l) {
 
 	TokenNode* oldlast = last;
 	last = new TokenNode(l, (TokenNode*) 0, oldlast);	//neues Last-Element wird erstellt
@@ -38,12 +38,12 @@ bool LinkedList::addLast(Token* l) {
 	//unser neues "last"-Element
 	if (oldlast != 0) {
 		oldlast->next = last;
-	} else {	//die LinkedList war leer vor Aufrud der Methode
+	} else {	//die TokenLinkedList war leer vor Aufrud der Methode
 		first = last;
 	}
 	size++;
 }
-Token* LinkedList::getToken(int index) {
+Token* TokenLinkedList::getToken(int index) {
 
 	if(first == 0)
 		return 0;
@@ -57,24 +57,24 @@ Token* LinkedList::getToken(int index) {
 
 	return runner->data;
 }
-bool LinkedList::exists(Token* l) {
+bool TokenLinkedList::exists(Token* l) {
 
 }
-int LinkedList::getIndex(Token* l) {	//falls nicht vorhanden: return(-1)
+int TokenLinkedList::getIndex(Token* l) {	//falls nicht vorhanden: return(-1)
 	//verschoben
 }
-int LinkedList::getSize() {
+int TokenLinkedList::getSize() {
 	return size;
 }
-bool LinkedList::removeAtIndex(int index) {
+bool TokenLinkedList::removeAtIndex(int index) {
 	//verschoben
 }
-bool LinkedList::removeObj(Token* l) {
+bool TokenLinkedList::removeObj(Token* l) {
 	//verschoben
 }
-bool LinkedList::removeFirst() {
+bool TokenLinkedList::removeFirst() {
 	//verschoben
 }
-bool LinkedList::removeLast() {
+bool TokenLinkedList::removeLast() {
 	//verschoben
 }

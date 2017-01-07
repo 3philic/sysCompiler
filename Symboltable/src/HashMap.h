@@ -10,13 +10,13 @@
 
 #include "../../TType.h"
 #include "../../Token.h"
-#include "LinkedList.h"
+#include "TokenLinkedList.h"
 
 
 class HashMap {
 
 private:
-	LinkedList* table;
+	TokenLinkedList* table;
 	int size;
 
 public:

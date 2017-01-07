@@ -18,7 +18,7 @@ EXTOBJS = $(OBJDIR)/Token.o \
 	$(OBJDIR)/String.o 
 OBJS = $(OBJDIR)/Symboltable.o \
 	$(OBJDIR)/TokenNode.o \
-	$(OBJDIR)/LinkedList.o \
+	$(OBJDIR)/TokenLinkedList.o \
 	$(OBJDIR)/HashMap.o
 	#$(OBJDIR)/ILinkedList.o 
 	#$(OBJDIR)/ILinkedList.o
@@ -32,7 +32,7 @@ MAIN_TEST_HASHMAP = $(OBJDIR)/TestHashMap.o
 OBJSFORSYMBOLTABLELIB =  \
 	$(LIBDIR)/Symboltable.o \
 	$(LIBDIR)/TokenNode.o \
-	$(LIBDIR)/LinkedList.o \
+	$(LIBDIR)/TokenLinkedList.o \
 	$(LIBDIR)/HashMap.o
 
 EXTOBJSFORSYMBOLTABLELIB =  \
