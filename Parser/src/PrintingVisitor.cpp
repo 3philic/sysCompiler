@@ -32,7 +32,7 @@ void PrintingVisitor::visit(class ParseTree &parseTree) {
         Leaf* leaf = dynamic_cast<Leaf*>(&parseTree);
         cout << "visited " << "Leaf (";
         leaf->print();
-        cout << ")" << endl;
+        cout << ")";
     } else {
         char *name = "";
 
@@ -62,6 +62,8 @@ void PrintingVisitor::visit(class ParseTree &parseTree) {
             name = "StatementsNode";
         }
 
-        cout << "visited " << name << endl;
+        cout << "visited " << name;
     }
+
+    cout << "\t\t\t" << parseTree.rule << endl;
 }
