@@ -134,7 +134,7 @@ bool StatementNode::parse(Parser &parser) {
             Leaf *geschweifteKlammerZuLeaf = new Leaf(geschweifteKlammerZu);
             if (geschweifteKlammerZuLeaf->parse(parser)) {
                 childrenNodes->put(geschweifteKlammerZuLeaf);
-                rule = STATEMENT_RULE;
+                rule = BLOCK_RULE;
                 return true;
             } else {
                 delete geschweifteKlammerZuLeaf;

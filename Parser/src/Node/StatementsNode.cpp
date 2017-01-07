@@ -30,7 +30,7 @@ bool StatementsNode::parse(Parser &parser) {
             StatementsNode *statementsNode = new StatementsNode();
             if (statementsNode->parse(parser)) {
                 childrenNodes->put(statementsNode);
-                rule = STATEMENT_RULE;
+                rule = STATEMENTS_RULE;
                 return true;
             } else {
                 delete statementsNode;
