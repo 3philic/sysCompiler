@@ -13,7 +13,7 @@
 using namespace std;
 
 Node::Node() {
-	childrenNodes = new LinkedList<Node>();
+	childrenNodes = new LinkedList<Node *>();
 }
 
 Node::~Node() {

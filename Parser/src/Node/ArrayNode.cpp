@@ -21,15 +21,15 @@ bool ArrayNode::parse(Parser &parser) {
     // 1. Alternative (Decl;Decls)
     Leaf *eckigeKlammerAufLeaf = new Leaf(eckigeKlammerAuf);
     if (eckigeKlammerAufLeaf->parse(parser)) {
-        // childrenNodes.add(eckigeKlammerAufLeaf);
+        childrenNodes->put(eckigeKlammerAufLeaf);
 
         Leaf *integerLeaf = new Leaf(integer);
         if (integerLeaf->parse(parser)) {
-            // childrenNodes.add(integerLeaf);
+            childrenNodes->put(integerLeaf);
 
             Leaf *eckigeKlammerZuLeaf = new Leaf(eckigeKlammerZu);
             if (eckigeKlammerZuLeaf->parse(parser)) {
-                // childrenNodes.add(eckigeKlammerZuLeaf);
+                childrenNodes->put(eckigeKlammerZuLeaf);
 
                 return true;
             } else {
@@ -46,7 +46,7 @@ bool ArrayNode::parse(Parser &parser) {
     // 2. Alternative (Epsilon)
     EpsilonNode *epsilonNode = new EpsilonNode();
     if (epsilonNode->parse(parser)) {
-        // childrenNodes.add(epsilonNode);
+        childrenNodes->put(epsilonNode);
         return true;
     } else {
         delete epsilonNode;

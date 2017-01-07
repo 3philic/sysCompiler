@@ -22,15 +22,15 @@ bool DeclNode::parse(Parser &parser) {
     // (int array identifier)
     Leaf *intLeaf = new Leaf(intToken);
     if (intLeaf->parse(parser)) {
-        // childrenNodes.add(intLeaf);
+        childrenNodes->put(intLeaf);
 
         ArrayNode *arrayNode = new ArrayNode();
         if (arrayNode->parse(parser)) {
-            // childrenNodes.add(arrayNode);
+            childrenNodes->put(arrayNode);
 
             Leaf *identifierNode = new Leaf(identifier);
             if (identifierNode->parse(parser)) {
-                // childrenNodes.add(identifierNode);
+                childrenNodes->put(identifierNode);
                 return true;
             } else {
                 delete identifierNode;

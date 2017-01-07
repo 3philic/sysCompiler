@@ -23,15 +23,15 @@ bool DeclsNode::parse(Parser &parser) {
     // 1. Alternative (Decl;Decls)
     DeclNode *declNode = new DeclNode();
     if (declNode->parse(parser)) {
-        // childrenNodes.add(declNode);
+        childrenNodes->put(declNode);
 
         Leaf *semikolonLeaf = new Leaf(semikolon);
         if (semikolonLeaf->parse(parser)) {
-            // childrenNodes.add(semikolonLeaf);
+            childrenNodes->put(semikolonLeaf);
 
             DeclsNode *declsNode = new DeclsNode();
             if (declsNode->parse(parser)) {
-                // childrenNodes.add(declsNode);
+                childrenNodes->put(declsNode);
 
                 return true;
             } else {
@@ -48,7 +48,7 @@ bool DeclsNode::parse(Parser &parser) {
     // 2. Alternative (Epsilon)
     EpsilonNode *epsilonNode = new EpsilonNode();
     if (epsilonNode->parse(parser)) {
-        // childrenNodes.add(epsilonNode);
+        childrenNodes->put(epsilonNode);
         return true;
     } else {
         delete epsilonNode;

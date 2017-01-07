@@ -24,11 +24,11 @@ bool ProgramNode::parse(Parser &parser) {
 
     DeclsNode *declsNode = new DeclsNode();
     if (declsNode->parse(parser)) {
-        // childrenNodes.add(declsNode);
+        childrenNodes->put(declsNode);
 
         StatementsNode *statementsNode = new StatementsNode();
         if (statementsNode->parse(parser)) {
-            // childrenNodes.add(statementsNode);
+            childrenNodes->put(statementsNode);
         } else {
             delete statementsNode;
             return false;

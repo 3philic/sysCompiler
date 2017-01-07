@@ -17,9 +17,10 @@ public:
 	Node();
 	virtual ~Node();
 
+    LinkedList<Node *>* childrenNodes;	// <Node>
+
 	void deleteChildrenNodes();
 private:
-	LinkedList<Node>* childrenNodes;	// <Node>
 };
 
 #endif /* PARSER_SRC_NODE_H_ */
