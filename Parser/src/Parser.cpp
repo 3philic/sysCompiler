@@ -18,6 +18,9 @@ Parser::~Parser() {
 }
 
 void Parser::parse() {
-	// test parse
 	parseTree->parse(*this);
+}
+
+void Parser::accept(class Visitor &visitor) {
+    parseTree->accept(visitor);
 }

@@ -16,6 +16,9 @@ public:
 	virtual ~ProgramNode();
 
 	bool parse(Parser &parser);
+	void accept(class Visitor &visitor);
+
+	void print();
 };
 
 #endif /* PARSER_SRC_PROGRAMNODE_H_ */

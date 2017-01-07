@@ -22,6 +22,7 @@ public:
 	Node* parseTree;	// rootNode
 
 	void parse();
+	void accept(class Visitor &visitor);
 
 private:
 	Token* currentToken;

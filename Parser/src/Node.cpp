@@ -10,7 +10,6 @@
 //#include "Parser.h"
 
 Node::Node() {
-	childrenNodes = new LinkedList();
 	alternatives = new LinkedList();
 }
 

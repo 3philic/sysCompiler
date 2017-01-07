@@ -18,9 +18,12 @@ public:
 	virtual ~Node();
 
 	virtual bool parse(Parser &parser) = 0;
+	virtual void accept(class Visitor &visitor) = 0;
+
+    // Visitor methods
+    virtual void print() = 0;
 
 private:
-	LinkedList* childrenNodes;	// <Node>
 	LinkedList* alternatives;	// <LinkedList <Node>>
 
 };

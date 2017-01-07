@@ -54,7 +54,7 @@ set(SOURCE_FILES_PARSER
     Parser/src/ProgramNode.cpp
     Parser/src/ProgramNode.h
     Parser/src/TestParser.cpp
-    )
+        Parser/src/Visitor.cpp Parser/src/Visitor.h Parser/src/PrintingVisitor.cpp Parser/src/PrintingVisitor.h)
 
 
 add_executable(AutomatTest ${SOURCE_FILES_BASE} ${SOURCE_FILES_AUTOMAT} Automat/src/TestAutomat.cpp)
