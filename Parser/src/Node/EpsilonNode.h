@@ -8,12 +8,14 @@
 
 #include "../Node.h"
 
-class EpsilonNode: public Node {
+class EpsilonNode : public Node {
 public:
     EpsilonNode();
+
     virtual ~EpsilonNode();
 
     bool parse(Parser &parser);
+
     void accept(class Visitor &visitor);
 
     void print();

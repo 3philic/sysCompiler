@@ -3,6 +3,8 @@
 //
 
 #include "ExpNode.h"
+#include "Exp2Node.h"
+#include "OpExpNode.h"
 
 using namespace std;
 
@@ -14,7 +16,23 @@ ExpNode::~ExpNode() {
 }
 
 bool ExpNode::parse(Parser &parser) {
-    cout << "Implement ExpNode::parse(). Return false." << endl;
+    Exp2Node *exp2Node = new Exp2Node();
+    if (exp2Node->parse(parser)) {
+        childrenNodes->put(exp2Node);
+
+        OpExpNode *opExpNode = new OpExpNode();
+        if (exp2Node->parse(parser)) {
+            childrenNodes->put(opExpNode);
+
+            return true;
+        } else {
+            delete (exp2Node);
+        }
+
+    } else {
+        delete (exp2Node);
+    }
+
     return false;
 }
 

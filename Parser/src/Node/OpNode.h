@@ -1,0 +1,25 @@
+//
+// Created by Jones on 07.01.17.
+//
+
+#ifndef SYSCOMPILER_OPNODE_H
+#define SYSCOMPILER_OPNODE_H
+
+
+#include "../Node.h"
+
+class OpNode : public Node {
+public:
+    OpNode();
+
+    virtual ~OpNode();
+
+    bool parse(Parser &parser);
+
+    void accept(class Visitor &visitor);
+
+    void print();
+};
+
+
+#endif //SYSCOMPILER_OPNODE_H
