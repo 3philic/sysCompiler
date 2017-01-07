@@ -21,12 +21,12 @@ bool ExpNode::parse(Parser &parser) {
         childrenNodes->put(exp2Node);
 
         OpExpNode *opExpNode = new OpExpNode();
-        if (exp2Node->parse(parser)) {
+        if (opExpNode->parse(parser)) {
             childrenNodes->put(opExpNode);
 
             return true;
         } else {
-            delete (exp2Node);
+            delete (opExpNode);
         }
 
     } else {

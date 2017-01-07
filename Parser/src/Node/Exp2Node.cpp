@@ -93,7 +93,7 @@ bool Exp2Node::parse(Parser &parser) {
 
     deleteChildrenNodes();
 
-    // 4. Alternative ( !EXP2 )
+    // 5. Alternative ( !EXP2 )
     Leaf *ausrufeZeichenLeaf = new Leaf(ausrufezeichen);
     if (ausrufeZeichenLeaf->parse(parser)) {
         childrenNodes->put(ausrufeZeichenLeaf);
