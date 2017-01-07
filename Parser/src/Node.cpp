@@ -13,13 +13,20 @@
 using namespace std;
 
 Node::Node() {
-	childrenNodes = new LinkedList<Node *>();
+    childrenNodes = new LinkedList<Node *>();
 }
 
 Node::~Node() {
-	// TODO Auto-generated destructor stub
+    // TODO Auto-generated destructor stub
 }
 
 void Node::deleteChildrenNodes() {
-	cout << "Implement Node::deleteChildrenNodes()." << endl;
+    LinkedList<Node *>::ListIterator<Node *> *iterator = childrenNodes->iterator();
+    while (iterator->hasNext()) {
+        Node *next = iterator->next();
+        delete next;
+    }
+    delete iterator;
+    delete childrenNodes;
+    childrenNodes = new LinkedList<Node *>();
 }
