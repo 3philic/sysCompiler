@@ -85,22 +85,22 @@ int main(int argc, char **argv) {
     outfile.open("output.txt");
 
     while (true) {
-        Token token = scanner->nextToken();
+        Token *token = scanner->nextToken();
 
         // Abbruchbedingung	(Lexem:"#" ist das Abbruchzeichen des Automaten)
-        if (token.lexem.equals(*new String('#'))) {
+        if (token->lexem.equals(*new String('#'))) {
             outfile << "EOF";
             break;
         }
 
         // print-out
-        outfile << "Token " << TTypeToString(token.type);
-        outfile << "\tLine: " << token.lineNo << " Column: " << token.columnNo;
-        if (token.type == identifier) {
-            outfile << "\tLexem: " << token.lexem;
+        outfile << "Token " << TTypeToString(token->type);
+        outfile << "\tLine: " << token->lineNo << " Column: " << token->columnNo;
+        if (token->type == identifier) {
+            outfile << "\tLexem: " << token->lexem;
         }
-        if (token.type == integer) {
-            outfile << "\tValue: " << *(token.value);
+        if (token->type == integer) {
+            outfile << "\tValue: " << *(token->value);
         }
         outfile << endl;
     }
