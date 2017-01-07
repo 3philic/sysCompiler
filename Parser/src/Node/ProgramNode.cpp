@@ -12,8 +12,6 @@
 using namespace std;
 
 ProgramNode::ProgramNode() {
-    // alternatives->add([Decls])
-    // alternatives->add([Statements])
 }
 
 ProgramNode::~ProgramNode() {
@@ -29,16 +27,15 @@ bool ProgramNode::parse(Parser &parser) {
         StatementsNode *statementsNode = new StatementsNode();
         if (statementsNode->parse(parser)) {
             childrenNodes->put(statementsNode);
+            return true;
         } else {
             delete statementsNode;
-            return false;
         }
     } else {
         delete declsNode;
-        return false;
     }
 
-	return true;
+    return false;
 }
 
 void ProgramNode::accept(Visitor &visitor) {
