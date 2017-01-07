@@ -31,7 +31,7 @@ bool Exp2Node::parse(Parser &parser) {
             Leaf *rundeKlammerZuLeaf = new Leaf(rundeKlammerZu);
             if (rundeKlammerZuLeaf->parse(parser)) {
                 childrenNodes->put(rundeKlammerZuLeaf);
-
+                rule = EXP2_EXP_RULE;
                 return true;
             } else {
                 delete rundeKlammerZuLeaf;
@@ -52,7 +52,7 @@ bool Exp2Node::parse(Parser &parser) {
         IndexNode *indexNode = new IndexNode();
         if (indexNode->parse(parser)) {
             childrenNodes->put(indexNode);
-
+            rule = EXP2_IDENTIFIER_RULE;
             return true;
         } else {
             delete indexNode;
@@ -66,7 +66,7 @@ bool Exp2Node::parse(Parser &parser) {
     Leaf *integerLeaf = new Leaf(integer);
     if (integerLeaf->parse(parser)) {
         childrenNodes->put(integerLeaf);
-
+        rule = EXP2_INTEGER_RULE;
         return true;
     } else {
         delete integerLeaf;
@@ -81,7 +81,7 @@ bool Exp2Node::parse(Parser &parser) {
         Exp2Node *exp2Node = new Exp2Node();
         if (exp2Node->parse(parser)) {
             childrenNodes->put(exp2Node);
-
+            rule = EXP2_MINUS_RULE;
             return true;
         } else {
             delete exp2Node;
@@ -101,7 +101,7 @@ bool Exp2Node::parse(Parser &parser) {
         Exp2Node *exp2Node = new Exp2Node();
         if (exp2Node->parse(parser)) {
             childrenNodes->put(exp2Node);
-
+            rule = EXP2_NOT_RULE;
             return true;
         } else {
             delete exp2Node;

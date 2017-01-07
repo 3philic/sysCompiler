@@ -15,6 +15,7 @@ EpsilonNode::~EpsilonNode() {
 }
 
 bool EpsilonNode::parse(Parser &parser) {
+    rule = EPSILON_RULE;
     return true;
 }
 

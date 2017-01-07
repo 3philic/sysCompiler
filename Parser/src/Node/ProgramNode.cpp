@@ -27,6 +27,7 @@ bool ProgramNode::parse(Parser &parser) {
         StatementsNode *statementsNode = new StatementsNode();
         if (statementsNode->parse(parser)) {
             childrenNodes->put(statementsNode);
+            rule = PROG_RULE;
             return true;
         } else {
             delete statementsNode;

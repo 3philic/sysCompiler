@@ -5,12 +5,15 @@
 #ifndef SYSCOMPILER_PARSETREE_H
 #define SYSCOMPILER_PARSETREE_H
 
+#include "Rule.h"
 class Parser;
 
 class ParseTree {
 public:
     ParseTree();
     virtual ~ParseTree();
+
+    Rule rule;
 
     virtual bool parse(Parser &parser) = 0;
     virtual void accept(class Visitor &visitor) = 0;

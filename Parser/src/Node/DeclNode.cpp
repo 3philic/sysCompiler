@@ -31,6 +31,7 @@ bool DeclNode::parse(Parser &parser) {
             Leaf *identifierNode = new Leaf(identifier);
             if (identifierNode->parse(parser)) {
                 childrenNodes->put(identifierNode);
+                rule = DECL_RULE;
                 return true;
             } else {
                 delete identifierNode;

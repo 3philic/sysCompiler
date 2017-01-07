@@ -25,7 +25,7 @@ bool OpExpNode::parse(Parser &parser) {
         ExpNode *expNode = new ExpNode();
         if (expNode->parse(parser)) {
             childrenNodes->put(expNode);
-
+            rule = OP_EXP_RULE;
             return true;
         } else {
             delete expNode;
@@ -39,6 +39,7 @@ bool OpExpNode::parse(Parser &parser) {
     EpsilonNode *epsilonNode = new EpsilonNode();
     if (epsilonNode->parse(parser)) {
         childrenNodes->put(epsilonNode);
+        rule = EPSILON_RULE;
         return true;
     } else {
         delete epsilonNode;

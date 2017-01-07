@@ -23,7 +23,7 @@ bool ExpNode::parse(Parser &parser) {
         OpExpNode *opExpNode = new OpExpNode();
         if (opExpNode->parse(parser)) {
             childrenNodes->put(opExpNode);
-
+            rule = EXP_RULE;
             return true;
         } else {
             delete (opExpNode);

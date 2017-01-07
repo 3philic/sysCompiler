@@ -16,7 +16,7 @@ OpNode::~OpNode() {
 
 bool OpNode::parse(Parser &parser) {
     //+|-|*|:|<|>|=|=:=|&&
-
+    rule = OPERATOR_RULE;
     //1 +
     Leaf *plusLeaf = new Leaf(plusToken);
     if (plusLeaf->parse(parser)) {

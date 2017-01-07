@@ -30,7 +30,7 @@ bool ArrayNode::parse(Parser &parser) {
             Leaf *eckigeKlammerZuLeaf = new Leaf(eckigeKlammerZu);
             if (eckigeKlammerZuLeaf->parse(parser)) {
                 childrenNodes->put(eckigeKlammerZuLeaf);
-
+                rule = ARRAY_RULE;
                 return true;
             } else {
                 delete eckigeKlammerZuLeaf;
@@ -47,6 +47,7 @@ bool ArrayNode::parse(Parser &parser) {
     EpsilonNode *epsilonNode = new EpsilonNode();
     if (epsilonNode->parse(parser)) {
         childrenNodes->put(epsilonNode);
+        rule = EPSILON_RULE;
         return true;
     } else {
         delete epsilonNode;

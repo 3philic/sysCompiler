@@ -30,7 +30,7 @@ bool StatementsNode::parse(Parser &parser) {
             StatementsNode *statementsNode = new StatementsNode();
             if (statementsNode->parse(parser)) {
                 childrenNodes->put(statementsNode);
-
+                rule = STATEMENT_RULE;
                 return true;
             } else {
                 delete statementsNode;
@@ -47,6 +47,7 @@ bool StatementsNode::parse(Parser &parser) {
     EpsilonNode *epsilonNode = new EpsilonNode();
     if (epsilonNode->parse(parser)) {
         childrenNodes->put(epsilonNode);
+        rule = EPSILON_RULE;
         return true;
     } else {
         delete epsilonNode;

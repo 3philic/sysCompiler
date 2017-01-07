@@ -29,7 +29,7 @@ bool IndexNode::parse(Parser &parser) {
             Leaf *eckigeKlammerZuLeaf = new Leaf(eckigeKlammerZu);
             if (eckigeKlammerZuLeaf->parse(parser)) {
                 childrenNodes->put(eckigeKlammerZuLeaf);
-
+                rule = INDEX_RULE;
                 return true;
             } else {
                 delete eckigeKlammerZuLeaf;

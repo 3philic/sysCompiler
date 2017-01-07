@@ -20,7 +20,7 @@ StatementNode::~StatementNode() {
 bool StatementNode::parse(Parser &parser) {
 
     // 1. Alternative (identifier INDEX := EXP)
-    Leaf *identifierLeaf= new Leaf(identifier);
+    Leaf *identifierLeaf = new Leaf(identifier);
     if (identifierLeaf->parse(parser)) {
         childrenNodes->put(identifierLeaf);
 
@@ -35,6 +35,7 @@ bool StatementNode::parse(Parser &parser) {
                 ExpNode *expNode = new ExpNode();
                 if (expNode->parse(parser)) {
                     childrenNodes->put(expNode);
+                    rule = ASSIGN_RULE;
                     return true;
                 } else {
                     delete expNode;
@@ -66,7 +67,7 @@ bool StatementNode::parse(Parser &parser) {
                 Leaf *rundeKlammerZuLeaf = new Leaf(rundeKlammerZu);
                 if (rundeKlammerZuLeaf->parse(parser)) {
                     childrenNodes->put(rundeKlammerZuLeaf);
-
+                    rule = WRITE_RULE;
                     return true;
                 } else {
                     delete rundeKlammerZuLeaf;
@@ -102,7 +103,7 @@ bool StatementNode::parse(Parser &parser) {
                     Leaf *rundeKlammerZuLeaf = new Leaf(rundeKlammerZu);
                     if (rundeKlammerZuLeaf->parse(parser)) {
                         childrenNodes->put(rundeKlammerZuLeaf);
-
+                        rule = READ_RULE;
                         return true;
                     } else {
                         delete rundeKlammerZuLeaf;
@@ -133,7 +134,7 @@ bool StatementNode::parse(Parser &parser) {
             Leaf *geschweifteKlammerZuLeaf = new Leaf(geschweifteKlammerZu);
             if (geschweifteKlammerZuLeaf->parse(parser)) {
                 childrenNodes->put(geschweifteKlammerZuLeaf);
-
+                rule = STATEMENT_RULE;
                 return true;
             } else {
                 delete geschweifteKlammerZuLeaf;
@@ -155,7 +156,7 @@ bool StatementNode::parse(Parser &parser) {
         if (rundeKlammerAufLeaf->parse(parser)) {
             childrenNodes->put(rundeKlammerAufLeaf);
 
-            ExpNode *expNode= new ExpNode();
+            ExpNode *expNode = new ExpNode();
             if (expNode->parse(parser)) {
                 childrenNodes->put(expNode);
 
@@ -174,7 +175,7 @@ bool StatementNode::parse(Parser &parser) {
                             StatementNode *statementNode2 = new StatementNode();
                             if (statementNode2->parse(parser)) {
                                 childrenNodes->put(statementNode2);
-
+                                rule = IF_RULE;
                                 return true;
                             } else {
                                 delete statementNode2;
@@ -208,7 +209,7 @@ bool StatementNode::parse(Parser &parser) {
         if (rundeKlammerAufLeaf->parse(parser)) {
             childrenNodes->put(rundeKlammerAufLeaf);
 
-            ExpNode *expNode= new ExpNode();
+            ExpNode *expNode = new ExpNode();
             if (expNode->parse(parser)) {
                 childrenNodes->put(expNode);
 
@@ -219,7 +220,7 @@ bool StatementNode::parse(Parser &parser) {
                     StatementNode *statementNode = new StatementNode();
                     if (statementNode->parse(parser)) {
                         childrenNodes->put(statementNode);
-
+                        rule = WHILE_RULE;
                         return true;
                     } else {
                         delete statementNode;

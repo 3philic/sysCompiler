@@ -32,7 +32,7 @@ bool DeclsNode::parse(Parser &parser) {
             DeclsNode *declsNode = new DeclsNode();
             if (declsNode->parse(parser)) {
                 childrenNodes->put(declsNode);
-
+                rule = DECLS_RULE;
                 return true;
             } else {
                 delete declNode;
@@ -49,6 +49,7 @@ bool DeclsNode::parse(Parser &parser) {
     EpsilonNode *epsilonNode = new EpsilonNode();
     if (epsilonNode->parse(parser)) {
         childrenNodes->put(epsilonNode);
+        rule = EPSILON_RULE;
         return true;
     } else {
         delete epsilonNode;
