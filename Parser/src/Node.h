@@ -20,9 +20,13 @@ public:
     LinkedList<ParseTree *>* childrenNodes;	// <ParseTree>
 	void deleteChildrenNodes();
 
+	LinkedList<ParseTree *>* getChildrenNodes();
+
 	// Override
-	void accept(class Visitor &visitor);
-private:
+	void accept(Visitor &visitor);
+
+
+
 };
 
 #endif /* PARSER_SRC_NODE_H_ */

@@ -9,6 +9,7 @@
 
 
 ParseTree::ParseTree() {
+    nodeType = noType;
 }
 
 ParseTree::~ParseTree() {
@@ -25,4 +26,12 @@ void ParseTree::accept(class Visitor &visitor) {
 
 void ParseTree::print() {
     assert(false);	// overwrite in subclasses of ParseTree!
+}
+
+void ParseTree::setNodeType(NodeType value){
+    nodeType = value;
+}
+
+NodeType ParseTree::getNodeType(){
+    return nodeType;
 }

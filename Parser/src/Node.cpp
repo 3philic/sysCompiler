@@ -21,7 +21,7 @@ Node::~Node() {
 }
 
 // Override
-void Node::accept(struct Visitor &visitor) {
+void Node::accept(Visitor &visitor) {
     LinkedList<ParseTree *>::ListIterator<ParseTree *> *iterator = childrenNodes->iterator();
     while (iterator->hasNext()) {
         ParseTree *next = iterator->next();
@@ -40,4 +40,8 @@ void Node::deleteChildrenNodes() {
     delete iterator;
     delete childrenNodes;
     childrenNodes = new LinkedList<ParseTree *>();
+}
+
+LinkedList<ParseTree *>* Node::getChildrenNodes() {
+    return childrenNodes;
 }
