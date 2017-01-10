@@ -22,8 +22,8 @@ public:
 
 	LinkedList<ParseTree *>* getChildrenNodes();
 
-	// Override
-	void accept(Visitor &visitor);
+	/*// Override
+	void accept(Visitor &visitor);*/
 
 
 

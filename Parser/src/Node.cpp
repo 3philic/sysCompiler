@@ -20,7 +20,7 @@ Node::~Node() {
     // TODO Auto-generated destructor stub
 }
 
-// Override
+/*// Override
 void Node::accept(Visitor &visitor) {
     LinkedList<ParseTree *>::ListIterator<ParseTree *> *iterator = childrenNodes->iterator();
     while (iterator->hasNext()) {
@@ -29,7 +29,7 @@ void Node::accept(Visitor &visitor) {
     }
     visitor.visit(*this);
     delete iterator;
-}
+}*/
 
 void Node::deleteChildrenNodes() {
     LinkedList<ParseTree *>::ListIterator<ParseTree *> *iterator = childrenNodes->iterator();
