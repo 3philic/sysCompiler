@@ -18,7 +18,7 @@ ArrayNode::~ArrayNode() {
 
 bool ArrayNode::parse(Parser &parser) {
 
-    // 1. Alternative (Decl;Decls)
+    // 1. Alternative [integer]
     Leaf *eckigeKlammerAufLeaf = new Leaf(eckigeKlammerAuf);
     if (eckigeKlammerAufLeaf->parse(parser)) {
         childrenNodes->put(eckigeKlammerAufLeaf);

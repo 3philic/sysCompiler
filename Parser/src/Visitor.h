@@ -18,6 +18,7 @@
 #include "Node/IndexNode.h"
 #include "Node/OpExpNode.h"
 #include "Node/OpNode.h"
+#include "NodeType.h"
 
 
 class Visitor {

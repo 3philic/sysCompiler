@@ -1,5 +1,5 @@
 //
-// Created by root on 08.01.17.
+// Created by tim on 08.01.17.
 //
 
 #ifndef SYSCOMPILER_TYPECHECKVISITOR_H
