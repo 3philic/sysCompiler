@@ -46,6 +46,7 @@ bool IndexNode::parse(Parser &parser) {
     EpsilonNode *epsilonNode = new EpsilonNode();
     if (epsilonNode->parse(parser)) {
         childrenNodes->put(epsilonNode);
+        rule = EPSILON_RULE;
         return true;
     } else {
         delete epsilonNode;
