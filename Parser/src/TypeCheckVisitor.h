@@ -6,13 +6,15 @@
 #define SYSCOMPILER_TYPECHECKVISITOR_H
 
 #include "Visitor.h"
+#include "Rule.h"
+#include "NodeType.h"
 
 
 class TypeCheckVisitor : public Visitor{
 
 public:
     TypeCheckVisitor();
-    virtual ~TypeCheckVisitor(void);
+    virtual ~TypeCheckVisitor();
 
     virtual void visit(Leaf &leaf);
     virtual void visit(ProgramNode &programNode);

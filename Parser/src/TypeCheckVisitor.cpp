@@ -4,6 +4,13 @@
 
 #include "TypeCheckVisitor.h"
 
+TypeCheckVisitor::TypeCheckVisitor(){
+
+}
+
+TypeCheckVisitor::~TypeCheckVisitor(){
+
+}
 
 void TypeCheckVisitor::visit(Leaf &leaf){
     //do nothing: type is set by parent nodes of leafs
@@ -91,13 +98,11 @@ void TypeCheckVisitor::visit(StatementsNode &statementsNode) {
 
 void TypeCheckVisitor::visit(StatementNode &statementNode){
 
-
     if(statementNode.rule == ASSIGN_RULE) {  // 1. Alternative (identifier INDEX := EXP)
 
-
-        Leaf *identifierLeaf = statementNode.getChildrenNodes()->get(0);
-        IndexNode *indexNode = statementNode.getChildrenNodes().get(1);
-        ExpNode *expNode = statementNode.getChildrenNodes()->get(3);
+        Leaf *identifierLeaf = (Leaf*) statementNode.getChildrenNodes()->get(0);
+        IndexNode *indexNode = (Node*) statementNode.getChildrenNodes()->get(1);
+        ExpNode *expNode = (Node*) statementNode.getChildrenNodes()->get(3);
 
         expNode->accept(*this);
         indexNode->accept(*this);
@@ -114,19 +119,15 @@ void TypeCheckVisitor::visit(StatementNode &statementNode){
             statementNode.setNodeType(errorType);
         }
 
-
     }else if(statementNode.rule == WRITE_RULE) {    // 2. Alternative (write( EXP ))
-
 
         statementNode.getChildrenNodes()->get(2)->accept(*this);    //expNode
         statementNode.setNodeType(noType);
 
-
     }else if(statementNode.rule == READ_RULE) {      // 3. Alternative (read ( identifier INDEX))
 
-
-        Leaf *identifierLeaf = statementNode.getChildrenNodes()->get(2);
-        IndexNode *indexNode = statementNode.getChildrenNodes().get(3);
+        Leaf *identifierLeaf = (Leaf*) statementNode.getChildrenNodes()->get(2);
+        IndexNode *indexNode = (Node*) statementNode.getChildrenNodes()->get(3);
 
         indexNode->accept(*this);
 
@@ -143,18 +144,14 @@ void TypeCheckVisitor::visit(StatementNode &statementNode){
             printError("Incompatible types", identifierLeaf->token->lineNo, identifierLeaf->token->columnNo);
         }
 
-
     }else if(statementNode.rule == BLOCK_RULE) {        // 4. Alternative ({STATEMENTS})
-
 
         statementNode.childrenNodes->get(1)->accept(*this);     //statementsNode
         statementNode.setNodeType(noType);
 
-
     }else if(statementNode.rule == IF_RULE) {           // 5. Alternative (if ( EXP ) STATEMENT else STATEMENT)
 
-
-        ExpNode *expNode = statementNode.getChildrenNodes()->get(2);
+        ExpNode *expNode = (Node*) statementNode.getChildrenNodes()->get(2);
         expNode->accept(*this);
         statementNode.getChildrenNodes()->get(4)->accept(*this);    //statementNode1 (If)
         statementNode.getChildrenNodes()->get(6)->accept(*this);    //statementNod2 (Else)
@@ -165,11 +162,9 @@ void TypeCheckVisitor::visit(StatementNode &statementNode){
             statementNode.setNodeType(noType);
         }
 
-
     }else if(statementNode.rule == WHILE_RULE){         // 6. Alternative (while ( EXP ) STATEMENT)
 
-
-        ExpNode *expNode = statementNode.getChildrenNodes()->get(2);
+        ExpNode *expNode = (Node*) statementNode.getChildrenNodes()->get(2);
         expNode->accept(*this);
         statementNode.getChildrenNodes()->get(4)->accept(*this); //statementNode
 
@@ -178,7 +173,6 @@ void TypeCheckVisitor::visit(StatementNode &statementNode){
         }else{
             statementNode.setNodeType(noType);
         }
-
     }
 }
 
@@ -186,7 +180,7 @@ void TypeCheckVisitor::visit(IndexNode &indexNode) {
 
     if(indexNode.rule == INDEX_RULE){
 
-        ExpNode *expNode = indexNode.getChildrenNodes()->get(1);
+        ExpNode *expNode = (Node*) indexNode.getChildrenNodes()->get(1);
         expNode->accept(*this);
 
         if(expNode->getNodeType() == errorType){
@@ -198,13 +192,12 @@ void TypeCheckVisitor::visit(IndexNode &indexNode) {
     }else if(indexNode.rule == EPSILON_RULE){
         indexNode.setNodeType(noType);
     }
-
 }
 
 void TypeCheckVisitor::visit(ExpNode &expNode) {
 
-    Exp2Node *exp2Node = expNode.getChildrenNodes()->get(0);
-    OpExpNode *opExpNode = expNode.getChildrenNodes()->get(1);
+    Exp2Node *exp2Node = (Node*) expNode.getChildrenNodes()->get(0);
+    OpExpNode *opExpNode = (Node*) expNode.getChildrenNodes()->get(1);
 
     exp2Node->accept(*this);
     opExpNode->accept(*this);
@@ -222,7 +215,7 @@ void TypeCheckVisitor::visit(Exp2Node &exp2Node) {
 
     if(exp2Node.rule == EXP2_EXP_RULE){                     // 1. Alternative ( EXP )
 
-        ExpNode *expNode = exp2Node.getChildrenNodes()->get(1);
+        ExpNode *expNode = (Node*) exp2Node.getChildrenNodes()->get(1);
         expNode->accept(*this);
         exp2Node.setNodeType(expNode->getNodeType());
 
@@ -250,11 +243,10 @@ void TypeCheckVisitor::visit(Exp2Node &exp2Node) {
 
     }else if(exp2Node.rule == EXP2_MINUS_RULE) {             // 4. Alternative (- EXP2 )
 
-        Exp2Node *exp2Node2 = exp2Node.getChildrenNodes()->get(1);
+        Exp2Node *exp2Node2 = (Node*) exp2Node.getChildrenNodes()->get(1);
         exp2Node2->accept(*this);
 
         exp2Node.setNodeType(exp2Node2->getNodeType());
-
 
     }else if(exp2Node.rule == EXP2_NOT_RULE) {              // 5. Alternative ( !EXP2 )
 
@@ -266,7 +258,6 @@ void TypeCheckVisitor::visit(Exp2Node &exp2Node) {
         } else {
             exp2Node->setNodeType(intType);
         }
-
     }
 }
 
@@ -274,8 +265,8 @@ void TypeCheckVisitor::visit(OpExpNode &opExpNode) {
 
     if(opExpNode.rule == OP_EXP_RULE){      // 1. Alternative (op ext)
 
-        ExpNode *expNode = opExpNode.getChildrenNodes()->get(1);
-        opExpNode.getChildrenNodes()->get(0)->accept(*this);
+        ExpNode *expNode = (Node*) opExpNode.getChildrenNodes()->get(1);
+        opExpNode.getChildrenNodes()->get(0)->accept(*this);    //opNode
         expNode->accept(*this);
 
         opExpNode.setNodeType(expNode->getNodeType());
@@ -288,28 +279,39 @@ void TypeCheckVisitor::visit(OpExpNode &opExpNode) {
 
 void void TypeCheckVisitor::visit(OpNode &opNode) {
 
-    Leaf *op = (Leaf*) opNode.getChildrenNodes()->get(0);
+    Leaf *opLeaf = (Leaf*) opNode.getChildrenNodes()->get(0);
 
-    if(op->expectedTType == plusToken){
-        opNode.setNodeType(opPlus);
-    }else if (op->expectedTType == minusToken){
-        opNode.setNodeType(opMinus);
-    }else if(op->expectedTType == stern){
-        opNode.setNodeType(opMult);
-    }else if(op->expectedTType == doppelpunkt){
-        opNode.setNodeType(opDiv);
-    }else if(op->expectedTType == kleiner){
-        opNode.setNodeType(opLess);
-    }else if(op->expectedTType == groesser){
-        opNode.setNodeType(opGreater);
-    }else if(op->expectedTType == gleich){
-        opNode.setNodeType(opEqual);
-    }else if(op->expectedTType == ungleich){
-        opNode.setNodeType(opUnEqual);
-    }else if(op->expectedTType == undund){
-        opNode.setNodeType(opAnd);
-    }
-
+    switch(opLeaf->expectedTType) {
+        case plusToken:
+            opNode.setNodeType(opPlus);
+            break;
+        case minusToken:
+            opNode.setNodeType(opMinus);
+            break;
+        case stern:
+            opNode.setNodeType(opMult);
+            break;
+        case doppelpunkt:
+            opNode.setNodeType(opDiv);
+            break;
+        case kleiner:
+            opNode.setNodeType(opLess);
+            break;
+        case groesser:
+            opNode.setNodeType(opGreater);
+            break;
+        case gleich:
+            opNode.setNodeType(opEqual);
+            break;
+        case ungleich:
+            opNode.setNodeType(opUnEqual);
+            break;
+        case undund:
+            opNode.setNodeType(opAnd);
+            break;
+        default:
+            break;
+    };
 }
 
 void TypeCheckVisitor::visit(EpsilonNode &epsilonNode) {
