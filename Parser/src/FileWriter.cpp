@@ -6,8 +6,10 @@
 
 using namespace std;
 
+static ofstream outfile;
+
 FileWriter::FileWriter(){
-//    outfile->open("~/Desktop/output.txt");
+    outfile.open("output.txt");
 }
 
 FileWriter::~FileWriter() {
@@ -15,11 +17,13 @@ FileWriter::~FileWriter() {
 }
 
 void FileWriter::write(char* s) {
-//    *outfile << s;
-    cout << s;
+    outfile << s;
 }
 
 void FileWriter::write(String s) {
-//    *outfile << s;
-    cout << s;
+    outfile << s;
+}
+
+void FileWriter::close() {
+    outfile.close();
 }

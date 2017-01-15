@@ -20,4 +20,6 @@ int main (int argc, char* argv[]){
     FileWriter *fileWriter = new FileWriter();
     CodeGeneratorVisitor *codeGeneratorVisitor = new CodeGeneratorVisitor(fileWriter);
     parser->accept(*codeGeneratorVisitor);
+
+    fileWriter->close();
 }

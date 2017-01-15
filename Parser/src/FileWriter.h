@@ -6,7 +6,7 @@
 #define SYSCOMPILER_FILEWRITER_H
 
 #include "../../String.h"
-#include <iostream>
+#include <fstream>
 
 class FileWriter{
 public:
@@ -16,7 +16,8 @@ public:
     void write(char* s);
     void write(String s);
 
+    void close();
+
 private:
-    std::ofstream* outfile;
 };
 #endif //SYSCOMPILER_FILEWRITER_H
