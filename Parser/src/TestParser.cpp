@@ -1,5 +1,7 @@
 #include "Parser.h"
 #include "TypeCheckVisitor.h"
+#include "CodeGeneratorVisitor.h"
+#include "FileWriter.h"
 #include <iostream>
 
 using namespace std;
@@ -10,7 +12,12 @@ int main (int argc, char* argv[]){
 	// Parse
 	parser->parse();
 
-	// Test Visit
-	TypeCheckVisitor *visitor = new TypeCheckVisitor();
-	parser->accept(*visitor);
+	// TypeCheck
+	TypeCheckVisitor *typeCheckVisitor = new TypeCheckVisitor();
+	parser->accept(*typeCheckVisitor);
+
+	// Code-Gen
+    FileWriter *fileWriter = new FileWriter();
+    CodeGeneratorVisitor *codeGeneratorVisitor = new CodeGeneratorVisitor(fileWriter);
+    parser->accept(*codeGeneratorVisitor);
 }

@@ -8,7 +8,6 @@
 #include "Visitor.h"
 #include "FileWriter.h"
 #include "String.h"
-#include "<stdio.h>"
 #include "Rule.h"
 
 class CodeGeneratorVisitor : public Visitor {
