@@ -20,9 +20,10 @@ public:
 
 	void initSymbols();
 
-	TType getTokenType(String lexem);
 	bool insertToken(Token* t);
 
+	TType getTokenType(String lexem);
+	TokenInformation* getTokenInformation(String lexem);
 };
 
 #endif /* SYMBOLTABLE_H_ */

@@ -9,6 +9,7 @@
 #define TOKEN_H_
 
 #include "TType.h"
+#include "TokenInformation.h"
 #include "String.h"
 
 class Token {
@@ -26,6 +27,12 @@ public:
 
 	bool equals(String lexem);
 	int hashCode();
+
+	TokenInformation* getInformation();
+	void setInformation(TokenInformation *information);
+
+private:
+	TokenInformation *tokenInformation;
 };
 
 #endif /* TOKEN_H_ */

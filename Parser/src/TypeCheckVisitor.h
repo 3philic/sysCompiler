@@ -7,7 +7,6 @@
 
 #include "Visitor.h"
 #include "Rule.h"
-#include "NodeType.h"
 
 
 class TypeCheckVisitor : public Visitor{

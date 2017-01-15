@@ -40,3 +40,7 @@ bool Symboltable::insertToken(Token* t) {
 	return this->hashmapPtr->insertToken(t);
 }
 
+TokenInformation* Symboltable::getTokenInformation(String lexem) {
+	return this->hashmapPtr->getTokenInformation(lexem);
+}
+

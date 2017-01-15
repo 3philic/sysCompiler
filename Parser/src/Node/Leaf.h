@@ -19,6 +19,9 @@ public:
     void accept(Visitor &visitor);
     void print();
 
+    virtual void setNodeType(NodeType value);
+    virtual NodeType getNodeType();
+
     Token *token;
     TType expectedTType;
 };

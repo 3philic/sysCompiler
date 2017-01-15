@@ -10,7 +10,6 @@
 #include "String.h"
 #include "<stdio.h>"
 #include "Rule.h"
-#include "NodeType.h"
 
 class CodeGeneratorVisitor : public Visitor {
 

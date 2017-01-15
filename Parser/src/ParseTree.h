@@ -6,7 +6,7 @@
 #define SYSCOMPILER_PARSETREE_H
 
 #include "Rule.h"
-#include "NodeType.h"
+#include "../../NodeType.h"
 
 class Parser;
 class Visitor;
@@ -25,8 +25,8 @@ public:
     // Visitor methods
     virtual void print() = 0;
 
-    void setNodeType(NodeType value);
-    NodeType getNodeType();
+    virtual void setNodeType(NodeType value);
+    virtual NodeType getNodeType();
 
 private:
     NodeType nodeType;

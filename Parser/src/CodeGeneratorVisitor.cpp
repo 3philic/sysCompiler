@@ -18,7 +18,6 @@
 #include "Node/IndexNode.h"
 #include "Node/OpExpNode.h"
 #include "Node/OpNode.h"
-#include "NodeType.h"
 
 CodeGeneratorVisitor::CodeGeneratorVisitor(FileWriter* fileWriter){
     this->fileWriter = fileWriter;

@@ -99,24 +99,30 @@ Token* Scanner::nextToken() {
 			returnedType = symboltable->getTokenType(*stringCache);
 
 			//weiterhin zu beachten: der String-Cache beinhaltet nun das Lexem des zu erstellenden Tokens
-			//es wird jetzt nur der der TType aufgelöst (in dem Fall, dass ein Token mit dem Lexem bereits
-			//in der Symboltabelle stand)..
+			//es wird jetzt der TType und die vorhandene TokenInformation aufgelöst (in dem Fall, dass ein Token
+			//mit dem Lexem bereits in der Symboltabelle stand)..
 			if (returnedType != null) {
 				delete tokenToReturn;
 				tokenToReturn = new Token(*stringCache, returnedType, lineCache,
 						columnCache);
+
+				TokenInformation *tokenInformation = symboltable->getTokenInformation(*stringCache);
+				tokenToReturn->setInformation(tokenInformation);
+
 				delete stringCache;
 				stringCache = new String();
 
 				return tokenToReturn;
 			}
 
-			//bzw. ein Token vom Typ "identifier" in der Symboltabelle angelegt
+			//bzw. ein Token vom Typ "identifier" mit neuer TokenInformation in der Symboltabelle angelegt
 			//(in dem Fall, dass kein Eintrag in der Symboltabelle vorhanden war)
 			else {
 				delete tokenToReturn;
 				tokenToReturn = new Token(*stringCache, identifier, lineCache,
 						columnCache);
+				tokenToReturn->setInformation(new TokenInformation());
+
 				delete stringCache;
 				stringCache = new String();
 

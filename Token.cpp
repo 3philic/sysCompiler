@@ -50,3 +50,11 @@ bool Token::equals(String lexem) {
 int Token::hashCode() {
 	return this->lexem.hashCode();
 }
+
+TokenInformation* Token::getInformation() {
+	return this->tokenInformation;
+}
+
+void Token::setInformation(TokenInformation *information) {
+	this->tokenInformation = information;
+}

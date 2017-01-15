@@ -6,9 +6,12 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(SOURCE_FILES_BASE
     String.cpp
     String.h
+    TokenInformation.cpp
+    TokenInformation.h
     Token.cpp
     Token.h
     TType.h
+    NodeType.h
     )
 
 set(SOURCE_FILES_AUTOMAT

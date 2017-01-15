@@ -22,10 +22,11 @@ private:
 public:
 	HashMap(int size);
 	~HashMap();
-	TType getTokenType(String lexem);
+
 	bool insertToken(Token* t);
 
-
+	TType getTokenType(String lexem);
+	TokenInformation* getTokenInformation(String lexem);
 };
 
 #endif /* HASHMAP_H_ */

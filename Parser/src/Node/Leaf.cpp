@@ -34,3 +34,11 @@ void Leaf::accept(Visitor &visitor) {
 void Leaf::print() {
     cout << TTypeToString(token->type);
 }
+
+void Leaf::setNodeType(NodeType value) {
+    token->getInformation()->nodeType = value;
+}
+
+NodeType Leaf::getNodeType() {
+    return token->getInformation()->nodeType;
+}
