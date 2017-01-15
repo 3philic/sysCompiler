@@ -55,6 +55,10 @@ bool IndexNode::parse(Parser &parser) {
     return false;
 }
 
+void IndexNode::accept(Visitor &visitor) {
+    visitor.visit(*this);
+}
+
 void IndexNode::print() {
     cout << "Implement IndexNode::print()." << endl;
 }

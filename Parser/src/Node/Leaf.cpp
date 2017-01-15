@@ -27,6 +27,10 @@ bool Leaf::parse(Parser &parser) {
     }
 }
 
+void Leaf::accept(Visitor &visitor) {
+    visitor.visit(*this);
+}
+
 void Leaf::print() {
     cout << TTypeToString(token->type);
 }

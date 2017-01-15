@@ -47,6 +47,10 @@ bool OpExpNode::parse(Parser &parser) {
     return false;
 }
 
+void OpExpNode::accept(Visitor &visitor) {
+    visitor.visit(*this);
+}
+
 void OpExpNode::print() {
     cout << "Implement ExpNode::print()." << endl;
 }

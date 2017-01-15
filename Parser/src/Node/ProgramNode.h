@@ -16,7 +16,7 @@ public:
 	virtual ~ProgramNode();
 
 	bool parse(Parser &parser);
-
+	void accept(Visitor &visitor);
 	void print();
 };
 

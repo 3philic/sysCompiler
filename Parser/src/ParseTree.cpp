@@ -21,7 +21,7 @@ bool ParseTree::parse(Parser &parser) {
 }
 
 void ParseTree::accept(class Visitor &visitor) {
-    visitor.visit(*this);
+    assert(false); // overwrite in subclasses of ParseTree!
 }
 
 void ParseTree::print() {

@@ -56,6 +56,10 @@ bool StatementsNode::parse(Parser &parser) {
     return false;
 }
 
+void StatementsNode::accept(Visitor &visitor) {
+    visitor.visit(*this);
+}
+
 void StatementsNode::print() {
     cout << "Implement StatementsNode::print()." << endl;
 }

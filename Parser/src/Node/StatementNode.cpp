@@ -241,6 +241,10 @@ bool StatementNode::parse(Parser &parser) {
     return false;
 }
 
+void StatementNode::accept(Visitor &visitor) {
+    visitor.visit(*this);
+}
+
 void StatementNode::print() {
     cout << "Implement StatementNode::print()." << endl;
 }

@@ -39,6 +39,10 @@ bool ProgramNode::parse(Parser &parser) {
     return false;
 }
 
+void ProgramNode::accept(Visitor &visitor) {
+    visitor.visit(*this);
+}
+
 void ProgramNode::print() {
     cout << "Implement ProgramNode::print()." << endl;
 }

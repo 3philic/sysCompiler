@@ -58,6 +58,10 @@ bool DeclsNode::parse(Parser &parser) {
     return false;
 }
 
+void DeclsNode::accept(Visitor &visitor) {
+    visitor.visit(*this);
+}
+
 void DeclsNode::print() {
     cout << "Implement DeclsNode::print()." << endl;
 }

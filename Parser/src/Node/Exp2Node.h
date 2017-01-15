@@ -15,8 +15,7 @@ public:
     virtual ~Exp2Node();
 
     bool parse(Parser &parser);
-
-
+    void accept(Visitor &visitor);
     void print();
 };
 

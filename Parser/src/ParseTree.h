@@ -6,9 +6,11 @@
 #define SYSCOMPILER_PARSETREE_H
 
 #include "Rule.h"
-#include "Visitor.h"
 #include "NodeType.h"
+
 class Parser;
+class Visitor;
+
 
 class ParseTree {
 public:

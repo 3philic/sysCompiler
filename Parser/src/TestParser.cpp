@@ -1,6 +1,7 @@
 #include "Parser.h"
-#include "PrintingVisitor.h"
+#include "TypeCheckVisitor.h"
 #include <iostream>
+
 using namespace std;
 
 int main (int argc, char* argv[]){
@@ -10,6 +11,6 @@ int main (int argc, char* argv[]){
 	parser->parse();
 
 	// Test Visit
-	PrintingVisitor *visitor = new PrintingVisitor();
+	TypeCheckVisitor *visitor = new TypeCheckVisitor();
 	parser->accept(*visitor);
 }

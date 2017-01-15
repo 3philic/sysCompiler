@@ -113,6 +113,10 @@ bool Exp2Node::parse(Parser &parser) {
     return false;
 }
 
+void Exp2Node::accept(Visitor &visitor) {
+    visitor.visit(*this);
+}
+
 void Exp2Node::print() {
     cout << "Implement ExpNode::print()." << endl;
 }

@@ -4,26 +4,13 @@
 
 #ifndef SYSCOMPILER_VISITOR_H
 #define SYSCOMPILER_VISITOR_H
-#include "Node.h"
-#include "Node/ArrayNode.h"
-#include "Node/ProgramNode.h"
-#include "Node/DeclsNode.h"
-#include "Node/DeclNode.h"
-#include "Node/StatementsNode.h"
-#include "Node/StatementNode.h"
-#include "Node/Leaf.h"
-#include "Node/EpsilonNode.h"
-#include "Node/Exp2Node.h"
-#include "Node/ExpNode.h"
-#include "Node/IndexNode.h"
-#include "Node/OpExpNode.h"
-#include "Node/OpNode.h"
-#include "NodeType.h"
 
+class ParseTree; class Leaf; class ProgramNode; class DeclsNode; class DeclNode;
+class StatementsNode; class StatementNode; class ArrayNode; class EpsilonNode;
+class Exp2Node; class ExpNode; class IndexNode; class OpExpNode; class OpNode;
 
 class Visitor {
 public:
-    virtual void visit(ParseTree &parseTree) = 0;
     virtual void visit(Leaf &leaf) = 0;
     virtual void visit(ProgramNode &programNode) = 0;
     virtual void visit(DeclsNode &declsNode) = 0;

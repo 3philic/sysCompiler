@@ -4,6 +4,22 @@
 
 #include "CodeGeneratorVisitor.h"
 
+#include "Node.h"
+#include "Node/ArrayNode.h"
+#include "Node/ProgramNode.h"
+#include "Node/DeclsNode.h"
+#include "Node/DeclNode.h"
+#include "Node/StatementsNode.h"
+#include "Node/StatementNode.h"
+#include "Node/Leaf.h"
+#include "Node/EpsilonNode.h"
+#include "Node/Exp2Node.h"
+#include "Node/ExpNode.h"
+#include "Node/IndexNode.h"
+#include "Node/OpExpNode.h"
+#include "Node/OpNode.h"
+#include "NodeType.h"
+
 CodeGeneratorVisitor::CodeGeneratorVisitor(FileWriter* fileWriter){
     this->fileWriter = fileWriter;
 }

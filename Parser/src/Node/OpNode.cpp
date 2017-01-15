@@ -118,6 +118,10 @@ bool OpNode::parse(Parser &parser) {
 
 }
 
+void OpNode::accept(Visitor &visitor) {
+    visitor.visit(*this);
+}
+
 void OpNode::print() {
     cout << "Implement ExpNode::print()." << endl;
 }

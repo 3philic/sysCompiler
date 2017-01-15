@@ -24,9 +24,6 @@ public:
 
 	/*// Override
 	void accept(Visitor &visitor);*/
-
-
-
 };
 
 #endif /* PARSER_SRC_NODE_H_ */

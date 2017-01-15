@@ -15,8 +15,7 @@ public:
     virtual ~EpsilonNode();
 
     bool parse(Parser &parser);
-
-
+    void accept(Visitor &visitor);
     void print();
 };
 

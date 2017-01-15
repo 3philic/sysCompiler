@@ -5,6 +5,7 @@
 #include "ArrayNode.h"
 #include "EpsilonNode.h"
 #include "Leaf.h"
+#include "../Visitor.h"
 
 using namespace std;
 
@@ -54,6 +55,10 @@ bool ArrayNode::parse(Parser &parser) {
     }
 
     return false;
+}
+
+void ArrayNode::accept(Visitor &visitor) {
+    visitor.visit(*this);
 }
 
 void ArrayNode::print() {

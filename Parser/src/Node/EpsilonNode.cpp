@@ -19,6 +19,10 @@ bool EpsilonNode::parse(Parser &parser) {
     return true;
 }
 
+void EpsilonNode::accept(Visitor &visitor) {
+    visitor.visit(*this);
+}
+
 void EpsilonNode::print() {
     cout << "Implement EpsilonNode::print()." << endl;
 }

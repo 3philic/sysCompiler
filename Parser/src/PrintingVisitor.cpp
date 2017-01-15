@@ -19,6 +19,12 @@
 
 using namespace std;
 
+#pragma mark - Forward Declaration of Private Methods
+
+void visitParseTree(class ParseTree &parseTree);
+
+#pragma mark -
+
 PrintingVisitor::PrintingVisitor() {
 
 }
@@ -27,9 +33,62 @@ PrintingVisitor::~PrintingVisitor() {
     // TODO Auto-generated destructor stub
 }
 
-void PrintingVisitor::visit(class ParseTree &parseTree) {
+void PrintingVisitor::visit(Leaf &leaf) {
+    visitParseTree(leaf);
+}
+
+void PrintingVisitor::visit(ProgramNode &programNode) {
+    visitParseTree(programNode);
+}
+
+void PrintingVisitor::visit(DeclsNode &declsNode) {
+    visitParseTree(declsNode);
+}
+
+void PrintingVisitor::visit(DeclNode &declNode) {
+    visitParseTree(declNode);
+}
+
+void PrintingVisitor::visit(StatementsNode &statementsNode) {
+    visitParseTree(statementsNode);
+}
+
+void PrintingVisitor::visit(StatementNode &statementNode) {
+    visitParseTree(statementNode);
+}
+
+void PrintingVisitor::visit(ArrayNode &arrayNode) {
+    visitParseTree(arrayNode);
+}
+
+void PrintingVisitor::visit(EpsilonNode &epsilonNode) {
+    visitParseTree(epsilonNode);
+}
+
+void PrintingVisitor::visit(Exp2Node &exp2Node) {
+    visitParseTree(exp2Node);
+}
+
+void PrintingVisitor::visit(ExpNode &expNode) {
+    visitParseTree(expNode);
+}
+
+void PrintingVisitor::visit(IndexNode &indexNode) {
+    visitParseTree(indexNode);
+}
+
+void PrintingVisitor::visit(OpExpNode &opExpNode) {
+    visitParseTree(opExpNode);
+}
+
+void PrintingVisitor::visit(OpNode &opNode) {
+    visitParseTree(opNode);
+}
+
+// private, unexposed helper method
+void visitParseTree(class ParseTree &parseTree) {
     if (typeid(parseTree) == typeid(Leaf)) {
-        Leaf* leaf = dynamic_cast<Leaf*>(&parseTree);
+        Leaf *leaf = dynamic_cast<Leaf*>(&parseTree);
         cout << "visited " << "Leaf (";
         leaf->print();
         cout << ")";

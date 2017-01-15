@@ -14,7 +14,7 @@ public:
     virtual ~ArrayNode();
 
     bool parse(Parser &parser);
-
+    void accept(Visitor &visitor);
     void print();
 };
 
