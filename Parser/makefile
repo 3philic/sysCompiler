@@ -45,7 +45,7 @@ OBJSFORPARSERLIB =  \
 
 #Variante  mit guten Kenntnissen
 makeTestParser: $(OBJS)
-	g++ -g $^ -L../sharedlib  -lAutomat -lBuffer -lSymboltable -lScanner -o $(BINDIR)/ParserTest
+	g++ -g $^ -L../sharedlib -o $(BINDIR)/ParserTest -lScanner -lAutomat -lBuffer -lSymboltable 
 	
 	
 	

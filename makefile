@@ -16,7 +16,7 @@ PARSERDIR = Parser
 SHAREDLIB = sharedlib
 
 
-all:	automatLib bufferLib symboltableLib scannerLib parser
+all: automatLib bufferLib symboltableLib scannerLib parser
 	@echo "target all"
 
 	
@@ -25,9 +25,9 @@ clean:
 	rm -rf $(AUTOMATDIR)/lib/*
 	rm -rf $(BUFFERDIR)/lib/*
 	rm -rf $(SYMBOLTABLEDIR)/lib/*
-	rm -rf $(SHAREDLIB)/*
-	rm -rf $(SCANNERDIR)/debug/*
 	rm -rf $(SCANNERDIR)/lib/*
+	rm -rf $(SHAREDLIB)/*
+	rm -rf $(PARSERDIR)/debug/*
 	
 
 parser: 

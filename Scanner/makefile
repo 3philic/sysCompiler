@@ -71,7 +71,7 @@ cleanScanner:
 	
 	
 ScannerLib:$(OBJSFORSCANNERLIB)
-	g++ -L../sharedlib  -lAutomat -lBuffer -lSymboltable -shared -o $(SHAREDLIB)/libScanner.so $^
+	g++ -L../sharedlib -shared -o $(SHAREDLIB)/libScanner.so -lAutomat -lBuffer -lSymboltable $^
 
 $(LIBDIR)/%.o :  $(SRCDIR)/%.cpp 
 	@echo "g++ $*.cpp"

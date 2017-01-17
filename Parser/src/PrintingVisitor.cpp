@@ -3,6 +3,9 @@
 //
 
 #include "PrintingVisitor.h"
+
+#include <typeinfo>
+
 #include "Node/ProgramNode.h"
 #include "Node/ArrayNode.h"
 #include "Node/DeclNode.h"

@@ -55,7 +55,7 @@ cleanBuffer:
 #
 
 BufferLib:$(OBJSFORBUFFERLIB)
-		g++ -shared  -o $(SHAREDLIB)/libBuffer.so $^ 
+		g++ -shared -fPIC -o $(SHAREDLIB)/libBuffer.so $^ 
 
 	
 $(LIBDIR)/%.o :  $(SRCDIR)/%.cpp 
