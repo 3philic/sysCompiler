@@ -14,7 +14,8 @@ SHAREDLIB = ../sharedlib
 
 ## hier alle Object Files eintragen
 ## darauf achten, dass letzte Zeile ohne "\" eingetragen wird
-EXTOBJS = $(OBJDIR)/Token.o \
+EXTOBJS = $(OBJDIR)/TokenInformation.o \
+	$(OBJDIR)/Token.o \
 	$(OBJDIR)/String.o 
 OBJS = $(OBJDIR)/Symboltable.o \
 	$(OBJDIR)/TokenNode.o \
@@ -36,6 +37,7 @@ OBJSFORSYMBOLTABLELIB =  \
 	$(LIBDIR)/HashMap.o
 
 EXTOBJSFORSYMBOLTABLELIB =  \
+	$(LIBDIR)/TokenInformation.o \
 	$(LIBDIR)/Token.o \
 	$(LIBDIR)/String.o 
 	

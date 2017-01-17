@@ -1,6 +1,9 @@
 SRCDIR = src
 OBJDIR = debug
 
+SRCDIR_NODE = src/Node
+OBJDIR_NODE = $(OBJDIR)
+
 BINDIR = debug
 
 LIBDIR = lib
@@ -13,10 +16,29 @@ SHAREDLIB = ../sharedlib
 
 OBJS = $(OBJDIR)/Parser.o \
 	$(OBJDIR)/TestParser.o \
+	$(OBJDIR)/CodeGeneratorVisitor.o \
+	$(OBJDIR)/FileWriter.o \
 	$(OBJDIR)/Node.o \
-	$(OBJDIR)/ProgramNode.o
+	$(OBJDIR)/ParseTree.o \
+	$(OBJDIR)/PrintingVisitor.o \
+	$(OBJDIR)/TypeCheckVisitor.o \
+	$(OBJDIR)/Visitor.o \
+	$(OBJDIR_NODE)/ArrayNode.o \
+	$(OBJDIR_NODE)/DeclNode.o \
+	$(OBJDIR_NODE)/DeclsNode.o \
+	$(OBJDIR_NODE)/EpsilonNode.o \
+	$(OBJDIR_NODE)/Exp2Node.o \
+	$(OBJDIR_NODE)/ExpNode.o \
+	$(OBJDIR_NODE)/IndexNode.o \
+	$(OBJDIR_NODE)/Leaf.o \
+	$(OBJDIR_NODE)/OpExpNode.o \
+	$(OBJDIR_NODE)/OpNode.o \
+	$(OBJDIR_NODE)/ProgramNode.o \
+	$(OBJDIR_NODE)/StatementNode.o \
+	$(OBJDIR_NODE)/StatementsNode.o \
+	
 
-OBJSFORSCANNERLIB =  \
+OBJSFORPARSERLIB =  \
 	$(LIBDIR)/Parser.o
 
 
@@ -31,6 +53,14 @@ makeTestParser: $(OBJS)
 
 
 $(OBJDIR)/%.o :  $(SRCDIR)/%.cpp 
+	@echo "g++ $*.cpp"
+	g++ -g  -c -Wall  -o $@  $<
+
+# 
+# $@ name des object files
+# $< erste abhaengigkeit
+
+$(OBJDIR_NODE)/%.o :  $(SRCDIR_NODE)/%.cpp 
 	@echo "g++ $*.cpp"
 	g++ -g  -c -Wall  -o $@  $<
 
