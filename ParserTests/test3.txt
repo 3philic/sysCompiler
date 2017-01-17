@@ -1,0 +1,11 @@
+int i;
+int a;
+
+i := 5;
+a := 1;
+
+while(a < i){
+  write (a);
+  
+  a := a + 1;
+};
