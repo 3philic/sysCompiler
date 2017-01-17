@@ -1,5 +1,9 @@
 #include <iostream>
 #include <stdlib.h>
+
+#include <cerrno>
+#include <limits.h>
+
 using namespace std;
 
 #include "String.h"
