@@ -3,7 +3,7 @@
 //
 
 #include "TypeCheckVisitor.h"
-
+#include <stdio.h>
 #include "Node.h"
 #include "Node/ArrayNode.h"
 #include "Node/ProgramNode.h"
