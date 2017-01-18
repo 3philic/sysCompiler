@@ -8,8 +8,8 @@ using namespace std;
 
 static ofstream outfile;
 
-FileWriter::FileWriter(){
-    outfile.open("output.txt");
+FileWriter::FileWriter(char *outputFileName){
+    outfile.open(outputFileName);
 }
 
 FileWriter::~FileWriter() {

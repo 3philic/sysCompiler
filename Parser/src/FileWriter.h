@@ -10,7 +10,7 @@
 
 class FileWriter{
 public:
-    FileWriter();
+    FileWriter(char *outputFileName);
     virtual ~FileWriter();
 
     void write(char* s);
