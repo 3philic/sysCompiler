@@ -1,7 +1,0 @@
-else
-print
-read
-if If
-else ELSE
-while WHILE
-int 29
