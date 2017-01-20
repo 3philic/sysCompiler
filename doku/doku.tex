@@ -246,10 +246,8 @@ TType Automat::checkChar(char c) {
 			return integer;
 		case (eLexem): aktuellerZustand = anfang;
 			return lexem;
-        case (ePlus):  aktuellerZustand = anfang;
-        	return plusToken;
-        case (eMinus): aktuellerZustand = anfang;
-            return minusToken;
+		case (ePlus):  aktuellerZustand = anfang;
+			return plusToken;
 		// ...
 		case (zUngleichFailed):
 			return gleich;
@@ -488,18 +486,17 @@ Der Quellcode ist gekürzt und soll nur die wesentliche Vorgehensweise aufzeigen
 
 \begin{lstlisting}[caption=Codegenerierung, label=lst:codegenerator]
 void CodeGeneratorVisitor::visit(StatementNode &statementNode) {
-
-  if (statementNode.rule == ASSIGN_RULE) {
-    Leaf *identifierLeaf = (Leaf *) statementNode.getChildrenNodes()->get(0);
-    statementNode.getChildrenNodes()->get(3)->accept(*this);
-    fileWriter->write("\nLA $");
-    fileWriter->write(identifierLeaf->token->lexem);
-    statementNode.getChildrenNodes()->get(1)->accept(*this);
-    fileWriter->write("\nSTR");
-  } else if (statementNode.rule == WRITE_RULE) {
-      // ...
-    }
-    //...
+	if (statementNode.rule == ASSIGN_RULE) {
+		Leaf *identifierLeaf = (Leaf *) statementNode.getChildrenNodes()->get(0);
+		statementNode.getChildrenNodes()->get(3)->accept(*this);
+		fileWriter->write("\nLA $");
+		fileWriter->write(identifierLeaf->token->lexem);
+		statementNode.getChildrenNodes()->get(1)->accept(*this);
+		fileWriter->write("\nSTR");
+	} else if (statementNode.rule == WRITE_RULE) {
+		// ...
+	}
+	//...
 }
 \end{lstlisting}
 
